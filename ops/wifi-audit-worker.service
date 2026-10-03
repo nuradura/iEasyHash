@@ -1,0 +1,38 @@
+[Unit]
+Description=iEasyHash single-GPU Hashcat worker
+After=network.target
+
+[Service]
+User=wifi-audit
+Group=wifi-audit
+WorkingDirectory=/opt/wifi-audit
+EnvironmentFile=/etc/wifi-audit.env
+Environment=HOME=/var/lib/wifi-audit
+Environment=PYTHONUNBUFFERED=1
+Environment=XDG_CACHE_HOME=/var/cache/wifi-audit
+ExecStart=/opt/wifi-audit/.venv/bin/python -m webapp.worker
+Restart=on-failure
+RestartSec=3
+StateDirectory=wifi-audit
+StateDirectoryMode=0700
+CacheDirectory=wifi-audit
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+KillMode=mixed
+TimeoutStopSec=35
+Nice=5
+CPUWeight=50
+MemoryMax=6G
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

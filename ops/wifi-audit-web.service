@@ -1,0 +1,34 @@
+[Unit]
+Description=iEasyHash web application
+After=network.target
+
+[Service]
+User=wifi-audit
+Group=wifi-audit
+WorkingDirectory=/opt/wifi-audit
+EnvironmentFile=/etc/wifi-audit.env
+Environment=HOME=/var/lib/wifi-audit
+Environment=PYTHONUNBUFFERED=1
+Environment=XDG_CACHE_HOME=/var/cache/wifi-audit
+ExecStart=/opt/wifi-audit/.venv/bin/uvicorn webapp.app:app --host 127.0.0.1 --port 8787 --proxy-headers --forwarded-allow-ips=127.0.0.1 --no-access-log
+Restart=on-failure
+RestartSec=3
+StateDirectory=wifi-audit
+StateDirectoryMode=0700
+CacheDirectory=wifi-audit
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+MemoryMax=2G
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target
