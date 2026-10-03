@@ -11,6 +11,7 @@ PUBLIC_URL = os.environ.get("WIFI_PUBLIC_URL", "http://localhost:8787").rstrip("
 COOKIE_SECURE = os.environ.get("WIFI_COOKIE_SECURE", "1") == "1"
 MAX_CAPTURE = 64 * 1024 * 1024
 MAX_WORDLIST = 2 * 1024 * 1024 * 1024
+MAX_GITHUB_WORDLIST = 1_500_000_000  # 1.5 GB, decimal bytes; streamed to disk.
 MAX_HASHES = 5000
 HASHCAT = os.environ.get("WIFI_HASHCAT", "/usr/bin/hashcat")
 CONVERTER = os.environ.get("WIFI_CONVERTER", "/usr/bin/hcxpcapngtool")

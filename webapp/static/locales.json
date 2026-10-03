@@ -982,10 +982,10 @@
       "ru": "Проходов ещё не было.",
       "zh": "尚无运行记录。"
     },
-    "Public text files up to 50 MB. Hashes and passwords are never sent to GitHub.": {
-      "en": "Public text files up to 50 MB. Hashes and passwords are never sent to GitHub.",
-      "ru": "Публичные текстовые файлы до 50 МБ. Хеши и пароли на GitHub не отправляются.",
-      "zh": "支持不超过 50 MB 的公开文本文件。哈希和密码不会发送到 GitHub。"
+    "Public text files up to 1.5 GB. Hashes and passwords are never sent to GitHub.": {
+      "en": "Public text files up to 1.5 GB. Hashes and passwords are never sent to GitHub.",
+      "ru": "Публичные текстовые файлы до 1,5 ГБ. Хеши и пароли на GitHub не отправляются.",
+      "zh": "支持不超过 1.5 GB 的公开文本文件。哈希和密码不会发送到 GitHub。"
     },
     "Public repository": {
       "en": "Public repository",
@@ -1522,10 +1522,10 @@
       "ru": "Источник",
       "zh": "来源"
     },
-    "GitHub dictionary limit is 50 MB.": {
-      "en": "GitHub dictionary limit is 50 MB.",
-      "ru": "Лимит GitHub-словаря — 50 МБ.",
-      "zh": "GitHub 字典文件大小上限为 50 MB。"
+    "GitHub dictionary limit is 1.5 GB.": {
+      "en": "GitHub dictionary limit is 1.5 GB.",
+      "ru": "Лимит GitHub-словаря — 1,5 ГБ.",
+      "zh": "GitHub 字典文件大小上限为 1.5 GB。"
     },
     "Recovered UTC": {
       "en": "Recovered UTC",
@@ -2025,7 +2025,7 @@
     "Пропустить словарь?": "Skip this dictionary?",
     "Пропущено": "Skipped",
     "Проходов ещё не было.": "No passes yet.",
-    "Публичные текстовые файлы до 50 МБ. Хеши и пароли на GitHub не отправляются.": "Public text files up to 50 MB. Hashes and passwords are never sent to GitHub.",
+    "Публичные текстовые файлы до 1,5 ГБ. Хеши и пароли на GitHub не отправляются.": "Public text files up to 1.5 GB. Hashes and passwords are never sent to GitHub.",
     "Публичный репозиторий": "Public repository",
     "РАБОЧАЯ ОБЛАСТЬ": "WORK AREA",
     "РАБОЧЕЕ ПРОСТРАНСТВО": "WORKSPACE",
@@ -2133,7 +2133,7 @@
     "Запись не найдена.": "Record not found.",
     "Используйте owner/repo или https://github.com/owner/repo.": "Use owner/repo or https://github.com/owner/repo.",
     "Источник": "Source",
-    "Лимит GitHub-словаря — 50 МБ.": "GitHub dictionary limit is 50 MB.",
+    "Лимит GitHub-словаря — 1,5 ГБ.": "GitHub dictionary limit is 1.5 GB.",
     "Найден UTC": "Recovered UTC",
     "Не найден": "Not recovered",
     "Не удалось извлечь WPA-handshake. Проверьте исходный захват.": "Could not extract a WPA handshake. Check the original capture.",

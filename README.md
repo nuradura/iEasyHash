@@ -136,7 +136,7 @@ To verify the responsive interface and regenerate the screenshots with simulated
 - A dictionary miss means **no match in those candidates**, not proof that a password is secure.
 - Capture uploads are limited to 64 MiB; dictionary uploads to 2 GiB. A reverse proxy may impose a smaller limit.
 - A job supports up to 5,000 WPA records and 100 dictionaries.
-- GitHub imports are limited to 50 MB per file; the browser catalog shows up to 1,500 files and reports truncation.
+- GitHub imports support dictionaries up to **1.5 GB per file** (1,500,000,000 bytes), streamed to disk. The same limit applies to catalog filtering and actual downloads. The browser catalog shows up to 1,500 files and reports truncation.
 - Resume uses a restore checkpoint. If one has not been written yet, the current dictionary starts again.
 - After an unexpected worker restart, the job requires an explicit resume or stop.
 - Pass duration is batch timing, not the precise moment an individual password was found.

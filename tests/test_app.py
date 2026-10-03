@@ -175,3 +175,73 @@ def test_progress_is_private_and_matches_measured_job(client):
     job = response.json()['job']
     assert job['id'] == identity and job['progress']['percent'] == 37.25
     assert 'pid' not in job and 'path' not in job['wordlists'][0]
+
+
+def test_github_catalog_accepts_large_dictionaries(client, monkeypatch):
+    import importlib
+    from types import SimpleNamespace
+    module = importlib.import_module('webapp.app')
+    limit = module.config.MAX_GITHUB_WORDLIST
+    assert limit == 1_500_000_000
+    sizes = [50_000_001, 550_000_000, limit, limit + 1]
+    class GitHubClient:
+        def __init__(self, **kwargs): pass
+        async def __aenter__(self): return self
+        async def __aexit__(self, *args): pass
+        async def get(self, url):
+            if '/git/trees/' in url:
+                data = {'tree': [dict(type='blob', path=f'dictionary-{i}.txt', size=size)
+                                 for i, size in enumerate(sizes)], 'truncated': False}
+            elif '/commits/' in url:
+                data = {'sha': 'a' * 40}
+            else:
+                data = {'default_branch': 'main'}
+            return SimpleNamespace(status_code=200, json=lambda: data)
+    monkeypatch.setattr(module.httpx, 'AsyncClient', GitHubClient)
+    login(client)
+    result = client.post('/api/github/catalog', json={'repository': 'demo/dictionaries'})
+    assert result.status_code == 200
+    assert [file['bytes'] for file in result.json()['files']] == sizes[:3]
+
+
+def test_github_stream_limit_and_cleanup(client, monkeypatch):
+    import importlib
+    module = importlib.import_module('webapp.app')
+    # Scale the boundary down, exercising the same byte-counting code without
+    # allocating or downloading a gigabyte-sized test fixture.
+    monkeypatch.setattr(module.config, 'MAX_GITHUB_WORDLIST', 8)
+    chunks = [b'one\n', b'two\n']
+    closed = []
+    class Stream:
+        status_code = 200
+        async def __aenter__(self): return self
+        async def __aexit__(self, *args): closed.append(True)
+        async def aiter_bytes(self, size):
+            assert size == 1024 * 1024
+            for chunk in chunks:
+                yield chunk
+    class GitHubClient:
+        def __init__(self, **kwargs): pass
+        async def __aenter__(self): return self
+        async def __aexit__(self, *args): pass
+        def stream(self, method, url): return Stream()
+    monkeypatch.setattr(module.httpx, 'AsyncClient', GitHubClient)
+    login(client)
+    payload = {'stamp': module.signer.dumps({'owner': 'demo', 'repo': 'dictionaries',
+                'commit': 'a' * 40}), 'path': 'test.txt'}
+    result = client.post('/api/github/import', json=payload)
+    assert result.status_code == 200
+    with connect() as db:
+        word = db.execute('SELECT bytes,lines FROM wordlists').fetchone()
+    assert tuple(word) == (8, 2)
+    chunks.append(b'x')
+    for language in ('en', 'ru', 'zh'):
+        client.cookies.set('ieasyhash_lang', language)
+        result = client.post('/api/github/import', json=payload)
+        assert result.status_code == 400
+        from webapp.i18n import translate
+        assert result.json()['detail'] == translate('GitHub dictionary limit is 1.5 GB.', language)
+        assert list((module.config.DATA / 'tmp').iterdir()) == []
+    assert len(closed) == 4
+    with connect() as db:
+        assert db.execute('SELECT count(*) FROM wordlists').fetchone()[0] == 1

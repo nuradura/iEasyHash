@@ -541,7 +541,7 @@ async def github_catalog(request: Request):
         commit = await github_get(client,f"https://api.github.com/repos/{owner}/{repo}/commits/{quote(info['default_branch'],safe='')}")
         sha = commit["sha"]
         tree = await github_get(client,f"https://api.github.com/repos/{owner}/{repo}/git/trees/{sha}?recursive=1")
-    files = [{"path":r["path"],"bytes":r.get("size",0)} for r in tree.get("tree",[]) if r.get("type")=="blob" and 0<r.get("size",0)<=50_000_000 and Path(r["path"]).suffix.lower() in (".txt",".lst",".dic",".wordlist")]
+    files = [{"path":r["path"],"bytes":r.get("size",0)} for r in tree.get("tree",[]) if r.get("type")=="blob" and 0<r.get("size",0)<=config.MAX_GITHUB_WORDLIST and Path(r["path"]).suffix.lower() in (".txt",".lst",".dic",".wordlist")]
     stamp = signer.dumps({"owner":owner,"repo":repo,"commit":sha})
     # Keep relevant dictionaries visible when large repositories exceed the display cap.
     priority=lambda r:(not any(term in r["path"].lower() for term in ("password","wordlist","dictionary","common-credentials")),r["path"])
@@ -570,8 +570,8 @@ async def github_import(request: Request):
                     target.chmod(0o600)
                     async for chunk in response.aiter_bytes(1024*1024):
                         size+=len(chunk)
-                        if size>50_000_000:
-                            raise ValueError("Лимит GitHub-словаря — 50 МБ.")
+                        if size>config.MAX_GITHUB_WORDLIST:
+                            raise ValueError("GitHub dictionary limit is 1.5 GB.")
                         await asyncio.to_thread(out.write,chunk)
         result=await asyncio.to_thread(import_wordlist,target,safe_name(path),f"GitHub · {entry['owner']}/{entry['repo']} @ {entry['commit'][:8]}")
         audit("github_import",result["id"])

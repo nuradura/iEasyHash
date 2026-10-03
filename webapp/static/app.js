@@ -457,7 +457,7 @@ function confirmModal(title, text, onConfirm, requireText = false) {
 }
 function githubDialog() {
   githubStamp = '';
-  openModal(t("GitHub dictionaries"), `<form id="github-form" class="github-search"><input id="github-repository" placeholder="danielmiessler/SecLists" required aria-label="${esc(t("Public repository"))}"><button class="button primary" type="submit">${esc(t("Find files \u2197"))}</button></form><p class="field-hint">${esc(t("Public text files up to 50 MB. Hashes and passwords are never sent to GitHub."))}</p><div id="github-results"></div>`, t("DICTIONARIES / GITHUB"));
+  openModal(t("GitHub dictionaries"), `<form id="github-form" class="github-search"><input id="github-repository" placeholder="danielmiessler/SecLists" required aria-label="${esc(t("Public repository"))}"><button class="button primary" type="submit">${esc(t("Find files \u2197"))}</button></form><p class="field-hint">${esc(t("Public text files up to 1.5 GB. Hashes and passwords are never sent to GitHub."))}</p><div id="github-results"></div>`, t("DICTIONARIES / GITHUB"));
   $('#github-form').addEventListener('submit', async e => {
     e.preventDefault();
     const button = e.target.querySelector('button');
