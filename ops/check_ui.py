@@ -70,8 +70,18 @@ def main():
                 context.route("**/api/progress", lambda r: r.fulfill(json={"job": state['jobs'][0] if state['jobs'] else None, "worker_online": True}))
                 page = context.new_page()
                 page.on("pageerror", lambda e: errors.append(str(e)))
-                page.goto(URL + "/login", wait_until="networkidle")
+                page.goto(URL + "/login", wait_until="domcontentloaded")
                 assert page.title() == "Sign in · iEasyHash"
+                page.wait_for_function("document.querySelector('.frog-footnote img').complete && document.querySelector('.frog-footnote img').naturalWidth > 0")
+                page.evaluate('document.fonts.ready')
+                assert page.locator('.radar-sweep').evaluate('el => getComputedStyle(el).animationName') == 'radar-scan'
+                assert page.locator('.access-badge').count() == 0
+                assert page.locator('.login-foot').count() == 0
+                expect(page.locator('.login-bottom')).to_contain_text('WPA × NVIDIA')
+                assert page.locator('.frog-footnote img').evaluate('img => img.complete && img.naturalWidth > 0')
+                page.emulate_media(reduced_motion='reduce')
+                assert page.locator('.radar-sweep').evaluate('el => getComputedStyle(el).animationName') == 'none'
+                page.emulate_media(reduced_motion='no-preference')
                 page.screenshot(path=str(screenshots / "login.png"), full_page=True)
                 page.locator('#username').fill("admin")
                 page.locator('#password').fill(password)
@@ -96,7 +106,7 @@ def main():
                 assert page.locator("#password-form").is_visible()
                 page.locator("#close-modal").click()
                 page.set_viewport_size({"width":390,"height":844})
-                page.goto(URL + "/", wait_until="networkidle")
+                page.goto(URL + "/", wait_until="domcontentloaded")
                 expect(page.locator("#networks-count")).to_have_text("3")
                 page.locator(".private-label").evaluate("(el) => el.textContent = 'DEMO'")
                 page.screenshot(path=str(screenshots / "mobile.png"), full_page=True)
@@ -106,11 +116,11 @@ def main():
                 for language, html in (("en", "en"), ("ru", "ru"), ("zh", "zh-Hans")):
                     for width in (1440, 390):
                         page.set_viewport_size({"width": width, "height": 1050 if width == 1440 else 844})
-                        page.locator('#language-select').select_option(language)
-                        page.wait_for_load_state('networkidle')
+                        with page.expect_navigation(wait_until='domcontentloaded'):
+                            page.locator('#language-select').select_option(language)
                         expect(page.locator('html')).to_have_attribute('lang', html)
                         expect(page.locator('#networks-count')).to_have_text('3')
-                        page.reload(wait_until='networkidle')
+                        page.reload(wait_until='domcontentloaded')
                         expect(page.locator('#language-select')).to_have_value(language)
                         for name in ('dashboard', 'networks', 'wordlists', 'history', 'system'):
                             page.locator(f'[data-page="{name}"]').click()
@@ -132,19 +142,22 @@ def main():
                     page.locator('#account-logout').click()
                     page.wait_for_url(URL + '/login')
                     expect(page.locator('#language-select')).to_have_value(language)
+                    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), language
+                    expect(page.locator('.radar-sweep')).to_be_visible()
+                    expect(page.locator('.frog-footnote')).to_be_visible()
                     assert context.request.get(URL + '/api/state').status == 401
                     page.locator('#username').fill('admin')
                     page.locator('#password').fill(password)
                     page.locator('#login-form button[type="submit"]').click()
                     page.wait_for_url(URL + '/')
                 # Measured progress eases to each sample, never predicts beyond it.
-                page.locator('#language-select').select_option('en')
-                page.wait_for_load_state('networkidle')
+                with page.expect_navigation(wait_until='domcontentloaded'):
+                    page.locator('#language-select').select_option('en')
+                expect(page.locator('#networks-count')).to_have_text('3')
                 state['jobs'] = [dict(id='synthetic-run', name='Demo audit', status='running',
                     created=now, started=now, finished=None, next_index=0,
                     hash_ids=['demo-1'], wordlists=words, error=None, runtime=0, workload=2,
                     progress=dict(percent=20, speed=200000, pass_index=1, wordlist='common-passwords.txt'))]
-                page.reload(wait_until='networkidle')
                 expect(page.locator('.run-panel')).to_have_class('panel run-panel is-running')
                 expect(page.locator('.run-progress')).to_have_attribute('aria-valuenow', '20.0')
                 page.locator('.run-progress').evaluate("el => el.dataset.identity = 'persistent'")

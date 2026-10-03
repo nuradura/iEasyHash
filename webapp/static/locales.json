@@ -17,6 +17,14 @@
     }
   },
   "messages": {
+    "Your Wi-Fi is in the crosshairs. See if your password holds up.": {
+      "en": "Your Wi-Fi is in the crosshairs. See if your password holds up.",
+      "ru": "Ваш Wi-Fi под прицелом. Проверьте, выдержит ли пароль.",
+      "zh": "你的 Wi-Fi 已被锁定。看看密码能否扛住考验。"
+    },
+    "Only your networks.": {"en": "Only your networks.", "ru": "Только ваши сети.", "zh": "只测你的网络。"},
+    "Only your server.": {"en": "Only your server.", "ru": "Только ваш сервер.", "zh": "只用你的服务器。"},
+    "A knowing frog smile": {"en": "A knowing frog smile", "ru": "Лягушонок с понимающей улыбкой", "zh": "露出会心微笑的小青蛙"},
     ". Duplicates:": {
       "en": ". Duplicates:",
       "ru": ". Дубликатов:",
