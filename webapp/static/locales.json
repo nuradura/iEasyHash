@@ -17,6 +17,8 @@
     }
   },
   "messages": {
+    "Account menu": {"en": "Account menu", "ru": "Меню аккаунта", "zh": "账户菜单"},
+    "Log out": {"en": "Log out", "ru": "Выйти", "zh": "退出登录"},
     "Your Wi-Fi is in the crosshairs. See if your password holds up.": {
       "en": "Your Wi-Fi is in the crosshairs. See if your password holds up.",
       "ru": "Ваш Wi-Fi под прицелом. Проверьте, выдержит ли пароль.",

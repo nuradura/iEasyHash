@@ -563,6 +563,7 @@ document.addEventListener('keydown', e => {
   }
 });
 $('#logout').addEventListener('click', () => action(async () => {
+  closeAccountMenu(true);
   await api('/api/logout', {
     method: 'POST'
   });
@@ -650,14 +651,50 @@ function clock() {
 }
 clock();
 setInterval(clock, 30000);
-$('#account').addEventListener('click', () => {
-  openModal(t("Account access"), `<form id="password-form" class="form-grid"><div class="field"><label for="current-password">${esc(t("Current password"))}</label><input id="current-password" type="password" autocomplete="current-password" required></div><div class="field"><label for="new-password">${esc(t("New password"))}</label><input id="new-password" type="password" autocomplete="new-password" minlength="14" maxlength="200" required><p class="field-hint">${esc(t("At least 14 characters. Changing it signs out all sessions."))}</p></div><div class="field"><label for="repeat-password">${esc(t("Confirm new password"))}</label><input id="repeat-password" type="password" autocomplete="new-password" required></div><div class="form-error" id="password-error"></div><div class="modal-actions"><button type="button" class="button secondary" id="account-logout">${esc(t("Sign out"))}</button><button type="submit" class="button primary">${esc(t("Change password"))}</button></div></form>`, t("ACCOUNT / PRIVATE ACCESS"));
-  $('#account-logout').addEventListener('click', async () => {
-    await api('/api/logout', {
-      method: 'POST'
-    });
-    location.replace('/login');
-  });
+const accountTrigger = $('#account-trigger');
+const accountMenu = $('#account-menu');
+const accountItems = [...accountMenu.querySelectorAll('[role=menuitem]')];
+function closeAccountMenu(restoreFocus = false) {
+  accountMenu.hidden = true;
+  accountTrigger.setAttribute('aria-expanded', 'false');
+  if (restoreFocus) accountTrigger.focus();
+}
+function openAccountMenu(last = false) {
+  accountMenu.hidden = false;
+  accountTrigger.setAttribute('aria-expanded', 'true');
+  accountItems[last ? accountItems.length - 1 : 0].focus();
+}
+accountTrigger.addEventListener('click', () => {
+  if (accountMenu.hidden) openAccountMenu();
+  else closeAccountMenu(true);
+});
+accountTrigger.addEventListener('keydown', event => {
+  if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
+    event.preventDefault();
+    openAccountMenu(event.key === 'ArrowUp');
+  }
+});
+accountMenu.addEventListener('keydown', event => {
+  const index = accountItems.indexOf(document.activeElement);
+  if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? accountItems.length - 1
+      : (index + (event.key === 'ArrowDown' ? 1 : -1) + accountItems.length) % accountItems.length;
+    accountItems[next].focus();
+  } else if (event.key === 'Escape') {
+    event.preventDefault();
+    closeAccountMenu(true);
+  } else if (event.key === 'Tab') closeAccountMenu();
+});
+document.addEventListener('click', event => {
+  if (!event.target.closest('.account-area')) closeAccountMenu();
+});
+document.addEventListener('focusin', event => {
+  if (!event.target.closest('.account-area')) closeAccountMenu();
+});
+$('#change-password').addEventListener('click', () => {
+  closeAccountMenu(true);
+  openModal(t("Account access"), `<form id="password-form" class="form-grid"><div class="field"><label for="current-password">${esc(t("Current password"))}</label><input id="current-password" type="password" autocomplete="current-password" required></div><div class="field"><label for="new-password">${esc(t("New password"))}</label><input id="new-password" type="password" autocomplete="new-password" minlength="14" maxlength="200" required><p class="field-hint">${esc(t("At least 14 characters. Changing it signs out all sessions."))}</p></div><div class="field"><label for="repeat-password">${esc(t("Confirm new password"))}</label><input id="repeat-password" type="password" autocomplete="new-password" required></div><div class="form-error" id="password-error"></div><div class="modal-actions"><button type="button" class="button secondary" data-close-modal>${esc(t("Cancel"))}</button><button type="submit" class="button primary">${esc(t("Change password"))}</button></div></form>`, t("ACCOUNT / PRIVATE ACCESS"));
   $('#password-form').addEventListener('submit', async e => {
     e.preventDefault();
     const button = e.target.querySelector('[type=submit]');

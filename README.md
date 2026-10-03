@@ -40,6 +40,8 @@ Active audits show expanding concentric gradient waves inside the frame and a mo
 
 ## Languages
 
+Account actions live in the **username / Owner** menu at the bottom of the desktop sidebar, or the avatar in the mobile header. Choose **Change password** or **Log out**. The menu supports keyboard navigation, Escape and outside-click dismissal; changing the password revokes all sessions.
+
 **English (default) · Русский · 简体中文 (Simplified Chinese)**
 
 Choose a language on the sign-in page or in the console toolbar. Your preference stays saved in this browser across reloads and sign-ins. Pages, dialogs, job statuses, application errors, dates, numbers and CSV headings follow your selection. Network names, filenames and recovered passwords retain their original content.
