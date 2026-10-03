@@ -77,6 +77,8 @@ def main():
                 assert page.locator('.radar-sweep').evaluate('el => getComputedStyle(el).animationName') == 'radar-scan'
                 assert page.locator('.access-badge').count() == 0
                 assert page.locator('.login-foot').count() == 0
+                assert page.locator('.meme-asterisk').count() == 0
+                assert page.locator('#language-select').evaluate('el => getComputedStyle(el).appearance') == 'none'
                 expect(page.locator('.login-bottom')).to_contain_text('WPA × NVIDIA')
                 assert page.locator('.frog-footnote img').evaluate('img => img.complete && img.naturalWidth > 0')
                 page.emulate_media(reduced_motion='reduce')
@@ -159,6 +161,8 @@ def main():
                     hash_ids=['demo-1'], wordlists=words, error=None, runtime=0, workload=2,
                     progress=dict(percent=20, speed=200000, pass_index=1, wordlist='common-passwords.txt'))]
                 expect(page.locator('.run-panel')).to_have_class('panel run-panel is-running')
+                assert page.locator('.run-panel').evaluate("el => getComputedStyle(el, '::before').animationName") == 'run-waves'
+                assert page.locator('.run-panel').evaluate("el => getComputedStyle(el, '::after').animationDelay") == '-3.2s'
                 expect(page.locator('.run-progress')).to_have_attribute('aria-valuenow', '20.0')
                 page.locator('.run-progress').evaluate("el => el.dataset.identity = 'persistent'")
                 page.locator('[data-job-action="pause"]').focus()

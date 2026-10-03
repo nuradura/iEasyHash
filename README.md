@@ -36,7 +36,7 @@ Built with **FastAPI, SQLite, vanilla JavaScript and Hashcat**. The interface us
 
 The sign-in screen features a radar sweep with fading echoes around the logo, plus a playful frog footnote. Both radar and audit animations respect reduced-motion settings. The `WPA × NVIDIA` label refers to the protocol and accelerator rather than a specific Linux distribution.
 
-Active audits use a softly breathing frame and a moving highlight on the progress bar. Hashcat reports measured progress every second; the console polls a lightweight private telemetry endpoint every 500 ms and eases the bar and percentage between samples. Progress never extrapolates beyond a measured value. Motion respects the system's [reduced-motion preference](https://www.w3.org/WAI/WCAG22/Techniques/css/C39), and pauses when the tab is hidden.
+Active audits show expanding concentric gradient waves inside the frame and a moving highlight on the progress bar. Hashcat reports measured progress every second; the console polls a lightweight private telemetry endpoint every 500 ms and eases the bar and percentage between samples. Progress never extrapolates beyond a measured value. Motion respects the system's [reduced-motion preference](https://www.w3.org/WAI/WCAG22/Techniques/css/C39), and pauses when the tab is hidden.
 
 ## Languages
 
