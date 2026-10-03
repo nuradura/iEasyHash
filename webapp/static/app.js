@@ -203,6 +203,7 @@ function renderWordlists() {
   $('#wordlists-table').innerHTML = words.length ? table([t("QUEUE"), t("DICTIONARY / SOURCE"), t("SIZE"), t("LINES"), t("ORDER")], words.map(w => `<tr><td><button class="wordlist-select ${w.position ? 'selected' : ''}" data-toggle-word="${w.id}" ${locked() ? 'disabled' : ''} aria-label="${w.position ? t("Remove from queue") : t("Add to queue")} ${esc(w.name)}">${w.position ? String(w.position).padStart(2, '0') : '＋'}</button></td><td><div class="wordlist-name">${esc(w.name)}</div><span class="cell-sub">${esc(t(w.source))}</span></td><td class="mono muted">${bytes(w.bytes)}</td><td class="mono muted">${number(w.lines)}</td><td><div class="row-buttons"><button class="icon-button" data-move-word="${w.id}" data-direction="-1" title="${esc(t("Move up"))}" ${locked() || !w.position || w.position === 1 ? 'disabled' : ''}>↑</button><button class="icon-button" data-move-word="${w.id}" data-direction="1" title="${esc(t("Move down"))}" ${locked() || !w.position || w.position === selected.length ? 'disabled' : ''}>↓</button><button class="icon-button danger-text" data-delete-word="${w.id}" title="${esc(t("Delete dictionary"))}" ${locked() ? 'disabled' : ''}>×</button></div></td></tr>`).join('')) : empty(t("No dictionaries found. Upload a file or open GitHub."), '▤');
 }
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let runMarkupKey = '';
 const runMotion = {key: '', value: 0, from: 0, target: 0, started: 0, frame: 0};
 const percentFormat = new Intl.NumberFormat(locale, {minimumFractionDigits: 1, maximumFractionDigits: 1});
 function paintRunProgress() {
@@ -250,6 +251,7 @@ function renderRun() {
   const job = activeJob() || state.jobs[0];
   $('.run-panel').classList.toggle('is-running', Boolean(job?.status === 'running' && state.worker_online && !document.hidden));
   if (!job) {
+    runMarkupKey = '';
     $('#run-status').className = 'badge neutral';
     $('#run-status').textContent = t("Ready");
     $('#current-run').innerHTML = `<div class="idle-run"><div class="idle-title">${esc(t("Ready to audit?"))}</div><p>${esc(t("Import your network capture, choose dictionaries"))}<br>${esc(t("and run the queue on your server."))}</p><div class="idle-foot"><span class="status-dot"></span> WPA / PBKDF2 · MODE 22000</div></div>`;
@@ -262,6 +264,20 @@ function renderRun() {
   const percent = Number.isFinite(rawPercent) ? Math.min(100, Math.max(0, rawPercent)) : 0;
   const ended = ['completed', 'stopped', 'failed'].includes(job.status);
   const eta = typeof p.eta === 'number' ? duration(p.eta - Date.now() / 1000) : '—';
+  // Keep the bar and its light effect mounted across high-frequency samples.
+  // Rebuilding this subtree would restart the sheen and steal button focus.
+  const markupKey = JSON.stringify([job.id, job.status, p.wordlist, p.pass_index,
+    job.next_index, job.error, state.hashes.filter(h => h.recovered && job.hash_ids.includes(h.id)).length]);
+  if (runMarkupKey === markupKey) {
+    if (!ended) {
+      const stats = $$('#current-run .run-stats strong');
+      stats[0].textContent = speed(p.speed || 0);
+      stats[1].textContent = eta;
+    }
+    setRunProgress(job, percent);
+    return;
+  }
+  runMarkupKey = markupKey;
   let controls = '';
   if (job.status === 'running') controls = `<button class="button secondary" data-job-action="pause" data-job="${job.id}">${esc(t("\u2161 Pause"))}</button><button class="button secondary" data-job-action="skip" data-job="${job.id}">${esc(t("Next dictionary \u2192"))}</button><button class="button secondary danger-text" data-job-action="stop" data-job="${job.id}">${esc(t("\u25A0 Stop"))}</button>`;else if (['paused', 'interrupted'].includes(job.status)) controls = `<button class="button primary" data-job-action="resume" data-job="${job.id}">${esc(t("Resume \u2197"))}</button><button class="button secondary danger-text" data-job-action="stop" data-job="${job.id}">${esc(t("Stop"))}</button>`;else if (job.status === 'queued') controls = `<button class="button secondary danger-text" data-job-action="stop" data-job="${job.id}">${esc(t("Cancel job"))}</button>`;else if (ended) controls = `<button class="text-button" data-go="history">${esc(t("View history \u2197"))}</button>`;
   $('#current-run').innerHTML = `<div class="run-content"><div class="run-title-row"><div class="run-wordlist" title="${esc(p.wordlist || job.name)}">${esc(p.wordlist || job.name)}</div><div class="run-percent"><span class="run-percent-value"></span><small>%</small></div></div><div class="run-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(t("Pass progress"))}"><span class="run-progress-fill"></span></div><div class="run-stats"><div><span>${ended ? t("Result") : t("Speed")}</span><strong>${ended ? `${state.hashes.filter(h => h.recovered && job.hash_ids.includes(h.id)).length} / ${job.hash_ids.length} ${t("recovered")}` : speed(p.speed || 0)}</strong></div><div><span>${ended ? t("Job duration") : t("Remaining")}</span><strong>${ended ? duration((job.finished || Date.now() / 1000) - (job.started || job.created)) : eta}</strong></div><div><span>${esc(t("Dictionary"))}</span><strong>${ended ? Math.min(job.next_index + 1, job.wordlists.length) : p.pass_index || 1} / ${job.wordlists.length}</strong></div></div>${controls ? `<div class="run-actions">${controls}</div>` : ''}${job.error ? `<div class="job-error">${esc(t(job.error))}</div>` : ''}${job.status === 'paused' ? `<div class="field-hint">${esc(t("Resume uses a checkpoint. If none was written, the current dictionary starts again."))}</div>` : ''}</div>`;

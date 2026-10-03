@@ -147,11 +147,15 @@ def main():
                 page.reload(wait_until='networkidle')
                 expect(page.locator('.run-panel')).to_have_class('panel run-panel is-running')
                 expect(page.locator('.run-progress')).to_have_attribute('aria-valuenow', '20.0')
+                page.locator('.run-progress').evaluate("el => el.dataset.identity = 'persistent'")
+                page.locator('[data-job-action="pause"]').focus()
                 state['jobs'][0]['progress']['percent'] = 40
                 expect(page.locator('.run-progress')).to_have_attribute('aria-valuenow', '40.0')
                 value = float(page.locator('.run-percent-value').inner_text())
                 assert 20 <= value < 40, value
                 expect(page.locator('.run-percent-value')).to_have_text('40.0')
+                assert page.locator('.run-progress').get_attribute('data-identity') == 'persistent'
+                assert page.locator('[data-job-action="pause"]').evaluate('el => el === document.activeElement')
                 state['jobs'][0]['progress'].update(percent=5, pass_index=2, wordlist='passphrases.txt')
                 expect(page.locator('.run-percent-value')).to_have_text('5.0')
                 page.emulate_media(reduced_motion='reduce')
