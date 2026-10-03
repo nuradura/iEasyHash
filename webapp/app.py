@@ -25,6 +25,7 @@ import httpx
 from . import config
 from .db import connect, init, uid, audit, idle, public_job
 from .imports import import_capture, import_wordlist
+from .i18n import context as language_context, language, translate
 
 if len(config.SECRET) < 32 or not config.PASSWORD_HASH:
     raise RuntimeError("Configure WIFI_SESSION_SECRET and WIFI_ADMIN_PASSWORD_HASH before starting")
@@ -82,7 +83,7 @@ async def guard(request, call_next):
     if response is None and length:
         try:
             if int(length) < 0 or int(length) > config.MAX_WORDLIST + 4 * 1024 * 1024:
-                response = JSONResponse({"detail": "Слишком большой запрос."}, status_code=413)
+                response = JSONResponse({"detail": translate("Слишком большой запрос.", language(request))}, status_code=413)
         except ValueError:
             response = Response(status_code=400)
     request.state.session = None
@@ -99,17 +100,18 @@ async def guard(request, call_next):
     path = request.url.path
     public = path in ("/login", "/robots.txt", "/favicon.ico", "/healthz") or path.startswith("/static/")
     if response is None and not public and not request.state.session:
-        response = JSONResponse({"detail": "Требуется вход."}, status_code=401) if path.startswith("/api/") else RedirectResponse("/login", status_code=303)
+        response = JSONResponse({"detail": translate("Требуется вход.", language(request))}, status_code=401) if path.startswith("/api/") else RedirectResponse("/login", status_code=303)
     if response is None and request.method not in SAFE:
         if not origin_ok(request):
-            response = JSONResponse({"detail": "Недопустимый источник запроса."}, status_code=403)
+            response = JSONResponse({"detail": translate("Недопустимый источник запроса.", language(request))}, status_code=403)
         elif path != "/login":
             session = request.state.session
             supplied = request.headers.get("x-csrf-token", "")
             if not session or not hmac.compare_digest(supplied, session["csrf"]):
-                response = JSONResponse({"detail": "Обновите страницу и повторите действие."}, status_code=403)
+                response = JSONResponse({"detail": translate("Обновите страницу и повторите действие.", language(request))}, status_code=403)
     if response is None:
         response = await call_next(request)
+    response.headers["Content-Language"] = language_context(request)["lang"]
     response.headers["X-Robots-Tag"] = "noindex, nofollow, noarchive, nosnippet"
     response.headers["Cache-Control"] = "no-store, private"
     response.headers["X-Content-Type-Options"] = "nosniff"
@@ -124,17 +126,17 @@ async def guard(request, call_next):
 
 @app.exception_handler(ValueError)
 async def invalid(request, exc):
-    return JSONResponse({"detail": str(exc)}, status_code=400)
+    return JSONResponse({"detail": translate(str(exc), language(request))}, status_code=400)
 
 
 @app.exception_handler(subprocess.TimeoutExpired)
 async def timed_out(request, exc):
-    return JSONResponse({"detail": "Операция превысила допустимое время."}, status_code=408)
+    return JSONResponse({"detail": translate("Операция превысила допустимое время.", language(request))}, status_code=408)
 
 
 @app.exception_handler(httpx.HTTPError)
 async def upstream_error(request,exc):
-    return JSONResponse({"detail":"Внешний сервис недоступен. Повторите позже."},status_code=502)
+    return JSONResponse({"detail":translate("Внешний сервис недоступен. Повторите позже.", language(request))},status_code=502)
 
 
 @app.get("/healthz")
@@ -149,7 +151,7 @@ def robots():
 
 @app.get("/favicon.ico")
 def favicon():
-    return FileResponse(config.ROOT / "static" / "mark.svg", media_type="image/svg+xml")
+    return FileResponse(config.ROOT / "static" / "mark.png", media_type="image/png")
 
 
 @app.get("/login", response_class=HTMLResponse)
@@ -157,7 +159,7 @@ def login_screen(request: Request):
     if request.state.session:
         return RedirectResponse("/", status_code=303)
     nonce = secrets.token_urlsafe(24)
-    response = templates.TemplateResponse(request=request, name="login.html", context={"nonce": nonce})
+    response = templates.TemplateResponse(request=request, name="login.html", context={"nonce": nonce, **language_context(request)})
     response.set_cookie("wifi_login", signer.dumps(nonce), httponly=True, secure=config.COOKIE_SECURE,
                         samesite="strict", max_age=600, path="/login")
     return response
@@ -171,24 +173,24 @@ async def login(request: Request):
         if not hmac.compare_digest(nonce, str(payload.get("nonce", ""))):
             raise BadSignature("nonce")
     except (BadSignature, SignatureExpired, TypeError):
-        return JSONResponse({"detail": "Обновите страницу входа."}, status_code=403)
+        return JSONResponse({"detail": translate("Обновите страницу входа.", language(request))}, status_code=403)
     ip, now = client_ip(request), time.time()
     with connect(True) as db:
         db.execute("DELETE FROM sessions WHERE expires<?", (now,))
         for key, limit in ((ip, 6), ("__global__", 30)):
             row = db.execute("SELECT * FROM login_limits WHERE ip=?", (key,)).fetchone()
             if row and row["blocked_until"] > now:
-                return JSONResponse({"detail": "Слишком много попыток. Повторите через 15 минут."}, status_code=429)
+                return JSONResponse({"detail": translate("Слишком много попыток. Повторите через 15 минут.", language(request))}, status_code=429)
             count = row["failures"] + 1 if row and now - row["window"] < 900 else 1
             window = row["window"] if row and now - row["window"] < 900 else now
             blocked = now + 900 if count > limit else 0
             db.execute("INSERT OR REPLACE INTO login_limits VALUES (?,?,?,?)", (key, count, window, blocked))
             if blocked:
-                return JSONResponse({"detail": "Слишком много попыток. Повторите через 15 минут."}, status_code=429)
+                return JSONResponse({"detail": translate("Слишком много попыток. Повторите через 15 минут.", language(request))}, status_code=429)
     password = payload.get("password", "")
     user = payload.get("username", "")
     if not isinstance(password, str) or not isinstance(user, str) or len(password) > 1024 or len(user) > 100:
-        return JSONResponse({"detail": "Неверный логин или пароль."}, status_code=401)
+        return JSONResponse({"detail": translate("Неверный логин или пароль.", language(request))}, status_code=401)
     try:
         with connect() as db:
             stored_hash = db.execute("SELECT value FROM meta WHERE key='admin_password_hash'").fetchone()[0]
@@ -197,7 +199,7 @@ async def login(request: Request):
         correct_password = False
     if not correct_password or not hmac.compare_digest(user.encode(), config.USERNAME.encode()):
         audit("login_failed", ip)
-        return JSONResponse({"detail": "Неверный логин или пароль."}, status_code=401)
+        return JSONResponse({"detail": translate("Неверный логин или пароль.", language(request))}, status_code=401)
     sid, csrf = secrets.token_urlsafe(32), secrets.token_urlsafe(32)
     with connect(True) as db:
         db.execute("DELETE FROM login_limits WHERE ip=?", (ip,))
@@ -243,7 +245,7 @@ def logout(request: Request):
 
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request):
-    return templates.TemplateResponse(request=request, name="index.html", context={"csrf": request.state.session["csrf"], "username": config.USERNAME})
+    return templates.TemplateResponse(request=request, name="index.html", context={"csrf": request.state.session["csrf"], "username": config.USERNAME, **language_context(request)})
 
 
 @app.get("/api/state")
@@ -264,21 +266,21 @@ def state():
 
 
 @app.get("/api/hashes/{identity}")
-def hash_detail(identity: str):
+def hash_detail(identity: str, request: Request):
     with connect() as db:
         row = db.execute("SELECT id,hash,ssid,source,created,recovered_at,password_hex IS NOT NULL AS recovered FROM hashes WHERE id=?", (identity,)).fetchone()
         if not row:
-            return JSONResponse({"detail": "Запись не найдена."}, status_code=404)
+            return JSONResponse({"detail": translate("Запись не найдена.", language(request))}, status_code=404)
         passes = [dict(r) for r in db.execute("SELECT a.id,a.job_id,a.wordlist_name,a.started,a.finished,p.outcome FROM hash_passes p JOIN attempts a ON a.id=p.attempt_id WHERE p.hash_id=? ORDER BY a.started", (identity,))]
     return {**dict(row), "passes": passes}
 
 
 @app.get("/api/hashes/{identity}/password")
-def reveal(identity: str):
+def reveal(identity: str, request: Request):
     with connect() as db:
         row = db.execute("SELECT password_hex FROM hashes WHERE id=?", (identity,)).fetchone()
     if not row or row[0] is None:
-        return JSONResponse({"detail": "Пароль ещё не найден."}, status_code=404)
+        return JSONResponse({"detail": translate("Пароль ещё не найден.", language(request))}, status_code=404)
     raw = bytes.fromhex(row[0])
     try:
         value = raw.decode("utf-8")
@@ -400,7 +402,7 @@ async def start_job(request: Request):
         for word in wordlists:
             if not (config.DATA / word["path"]).is_file():
                 raise ValueError("Один из файлов словарей недоступен.")
-        name = str(payload.get("name", "Проверка Wi-Fi")).strip()[:100] or "Проверка Wi-Fi"
+        name = str(payload.get("name", "Wi-Fi audit")).strip()[:100] or "Wi-Fi audit"
         identity = uid()
         db.execute("INSERT INTO jobs(id,name,status,created,hash_ids,wordlists,runtime,workload) VALUES (?,?,?,?,?,?,?,?)",
                    (identity,name,"queued",time.time(),json.dumps(ids),json.dumps(wordlists),runtime,workload))
@@ -433,7 +435,7 @@ def job_action(identity: str, action: str):
 
 @app.post("/api/reset")
 async def reset(request: Request):
-    if (await payload_json(request)).get("confirmation") != "ОЧИСТИТЬ":
+    if (await payload_json(request)).get("confirmation") not in ("CLEAR", "ОЧИСТИТЬ"):
         raise ValueError("Для подтверждения введите ОЧИСТИТЬ.")
     with connect(True) as db:
         idle(db)
@@ -451,14 +453,15 @@ async def reset(request: Request):
 
 
 @app.get("/api/export")
-def export():
+def export(request: Request):
+    tr = lambda message: translate(message, language(request))
     output = io.StringIO()
     writer = csv.writer(output)
-    writer.writerow(["SSID","Источник","Результат","Пароль","Найден UTC"])
+    writer.writerow([tr(message) for message in ["SSID","Source","Result","Password","Recovered UTC"]])
     with connect() as db:
         for row in db.execute("SELECT * FROM hashes ORDER BY created"):
             password = bytes.fromhex(row["password_hex"]).decode("utf-8","replace") if row["password_hex"] is not None else ""
-            cells = [row["ssid"],row["source"],"Найден" if row["password_hex"] is not None else "Не найден",password,str(row["recovered_at"] or "")]
+            cells = [row["ssid"],row["source"],tr("Recovered") if row["password_hex"] is not None else tr("Not recovered"),password,str(row["recovered_at"] or "")]
             # Avoid spreadsheet formulas in arbitrary SSIDs or passwords.
             writer.writerow(["'"+c if c.startswith(("=","+","-","@","\t","\r")) else c for c in cells])
     audit("export_results")
@@ -466,11 +469,11 @@ def export():
 
 
 @app.get("/api/attempts/{identity}/log")
-def pass_log(identity: str):
+def pass_log(identity: str, request: Request):
     with connect() as db:
         row = db.execute("SELECT log_path FROM attempts WHERE id=?", (identity,)).fetchone()
     if not row or not (config.DATA/row[0]).is_file():
-        return JSONResponse({"detail":"Журнал не найден."}, status_code=404)
+        return JSONResponse({"detail":translate("Журнал не найден.", language(request))}, status_code=404)
     path = config.DATA/row[0]
     with path.open("rb") as file:
         file.seek(max(0,path.stat().st_size-128000))

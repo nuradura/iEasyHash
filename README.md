@@ -30,7 +30,23 @@ Your GPU, your dictionaries, your workspace.
 
 iEasyHash turns an offline Hashcat workflow into a browser workspace. Import an existing capture, choose your dictionaries, arrange a queue, and follow each pass while an independent worker handles the GPU.
 
-Built with **FastAPI, SQLite, vanilla JavaScript and Hashcat**. The interface uses warm paper surfaces, graphite typography, teal telemetry and orange actions. It is responsive, has no frontend build step, and loads no external fonts or analytics. The current interface is in Russian; the project documentation is in English.
+Built with **FastAPI, SQLite, vanilla JavaScript and Hashcat**. The interface uses warm paper surfaces, graphite typography, teal telemetry and orange actions. It is responsive, has no frontend build step, and loads no external fonts or analytics.
+
+## Languages
+
+**English (default) · Русский · 简体中文 (Simplified Chinese)**
+
+Choose a language on the sign-in page or in the console toolbar. Your preference stays saved in this browser across reloads and sign-ins. Pages, dialogs, job statuses, application errors, dates, numbers and CSV headings follow your selection. Network names, filenames and recovered passwords retain their original content.
+
+Project documentation is in English. Contributions for additional languages are welcome; see the [translation guide](docs/TRANSLATIONS.md).
+
+<details>
+<summary>See the Russian and Chinese interfaces</summary>
+
+![Russian console, synthetic demonstration data](docs/images/dashboard-ru.png)
+![Simplified Chinese console, synthetic demonstration data](docs/images/dashboard-zh.png)
+
+</details>
 
 | Workflow | Capabilities |
 | --- | --- |

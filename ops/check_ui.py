@@ -70,11 +70,11 @@ def main():
                 page = context.new_page()
                 page.on("pageerror", lambda e: errors.append(str(e)))
                 page.goto(URL + "/login", wait_until="networkidle")
-                assert page.title() == "Вход · iEasyHash"
+                assert page.title() == "Sign in · iEasyHash"
                 page.screenshot(path=str(screenshots / "login.png"), full_page=True)
-                page.get_by_label("Логин", exact=True).fill("admin")
-                page.get_by_label("Пароль", exact=True).fill(password)
-                page.get_by_role("button", name="Войти в кабинет").click()
+                page.locator('#username').fill("admin")
+                page.locator('#password').fill(password)
+                page.locator('#login-form button[type="submit"]').click()
                 page.wait_for_url(URL + "/")
                 expect(page.locator("#networks-count")).to_have_text("3")
                 assert "Вычисления остаются на сервере" not in page.locator("body").inner_text()
@@ -102,13 +102,43 @@ def main():
                 for name in ("dashboard","networks","wordlists","history","system"):
                     page.locator(f'[data-page="{name}"]').click()
                     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), name
-                page.locator("#account").click()
-                page.locator("#account-logout").click()
-                page.wait_for_url(URL + "/login")
-                assert context.request.get(URL + "/api/state").status == 401
+                for language, html in (("en", "en"), ("ru", "ru"), ("zh", "zh-Hans")):
+                    for width in (1440, 390):
+                        page.set_viewport_size({"width": width, "height": 1050 if width == 1440 else 844})
+                        page.locator('#language-select').select_option(language)
+                        page.wait_for_load_state('networkidle')
+                        expect(page.locator('html')).to_have_attribute('lang', html)
+                        expect(page.locator('#networks-count')).to_have_text('3')
+                        page.reload(wait_until='networkidle')
+                        expect(page.locator('#language-select')).to_have_value(language)
+                        for name in ('dashboard', 'networks', 'wordlists', 'history', 'system'):
+                            page.locator(f'[data-page="{name}"]').click()
+                            assert page.locator(f'#page-{name}').is_visible()
+                            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), (language, width, name)
+                        page.locator('[data-page="wordlists"]').click()
+                        expect(page.locator('body')).to_contain_text('custom-dictionary.txt')
+                        page.locator('[data-page="dashboard"]').click()
+                        page.locator('#start-job').click()
+                        assert page.locator('#start-form').is_visible()
+                        page.locator('#close-modal').click()
+                        page.locator('#account').click()
+                        assert page.locator('#password-form').is_visible()
+                        page.locator('#close-modal').click()
+                        if width == 1440 and language != 'en':
+                            page.locator('.private-label').evaluate("(el) => el.textContent = 'DEMO · SYNTHETIC DATA'")
+                            page.screenshot(path=str(screenshots / f'dashboard-{language}.png'), full_page=True)
+                    page.locator('#account').click()
+                    page.locator('#account-logout').click()
+                    page.wait_for_url(URL + '/login')
+                    expect(page.locator('#language-select')).to_have_value(language)
+                    assert context.request.get(URL + '/api/state').status == 401
+                    page.locator('#username').fill('admin')
+                    page.locator('#password').fill(password)
+                    page.locator('#login-form button[type="submit"]').click()
+                    page.wait_for_url(URL + '/')
                 browser.close()
             assert not errors, errors
-            print("UI PASS: desktop, mobile, branding, navigation, dialogs, authentication and logout.")
+            print("UI PASS: English, Russian and Chinese; desktop/mobile, language persistence, navigation, dialogs and authentication.")
         finally:
             server.terminate()
             server.wait(timeout=10)

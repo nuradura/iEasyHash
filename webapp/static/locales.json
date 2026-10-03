@@ -1,0 +1,2190 @@
+{
+  "languages": {
+    "en": {
+      "name": "English",
+      "locale": "en-US",
+      "html": "en"
+    },
+    "ru": {
+      "name": "Русский",
+      "locale": "ru-RU",
+      "html": "ru"
+    },
+    "zh": {
+      "name": "中文",
+      "locale": "zh-CN",
+      "html": "zh-Hans"
+    }
+  },
+  "messages": {
+    ". Duplicates:": {
+      "en": ". Duplicates:",
+      "ru": ". Дубликатов:",
+      "zh": "。重复记录："
+    },
+    "0 B": {
+      "en": "0 B",
+      "ru": "0 Б",
+      "zh": "0 B"
+    },
+    "0 means no limit. The job pauses when the limit is reached.": {
+      "en": "0 means no limit. The job pauses when the limit is reached.",
+      "ru": "0 — без ограничения. При достижении лимита задача переходит на паузу.",
+      "zh": "0 表示不限时。达到时限后任务将暂停。"
+    },
+    "22000 · dictionary": {
+      "en": "22000 · dictionary",
+      "ru": "22000 · словарный",
+      "zh": "22000 · 字典模式"
+    },
+    "CPU threads": {
+      "en": "CPU threads",
+      "ru": "CPU потоки",
+      "zh": "CPU 线程"
+    },
+    "The CSV contains recovered passwords. Store it securely.": {
+      "en": "The CSV contains recovered passwords. Store it securely.",
+      "ru": "CSV содержит найденные пароли. Храните файл в безопасном месте.",
+      "zh": "CSV 文件包含已恢复的密码。请妥善保管。"
+    },
+    "GPU unavailable": {
+      "en": "GPU unavailable",
+      "ru": "GPU недоступна",
+      "zh": "GPU 不可用"
+    },
+    "Hashcat checks candidates sequentially on the GTX 1070.": {
+      "en": "Hashcat checks candidates sequentially on the GTX 1070.",
+      "ru": "Hashcat проверяет кандидатов последовательно на GTX 1070.",
+      "zh": "Hashcat 在 GTX 1070 上依次验证候选密码。"
+    },
+    "WPA records ·": {
+      "en": "WPA records ·",
+      "ru": "WPA-записей ·",
+      "zh": "条 WPA 记录 ·"
+    },
+    "Wi-Fi networks": {
+      "en": "Wi-Fi networks",
+      "ru": "Wi-Fi сети",
+      "zh": "Wi-Fi 网络"
+    },
+    "Worker online": {
+      "en": "Worker online",
+      "ru": "Worker на связи",
+      "zh": "工作进程在线"
+    },
+    "Worker unavailable": {
+      "en": "Worker unavailable",
+      "ru": "Worker недоступен",
+      "zh": "工作进程不可用"
+    },
+    "iEasyHash · Console": {
+      "en": "iEasyHash · Console",
+      "ru": "iEasyHash · Личный кабинет",
+      "zh": "iEasyHash · 控制台"
+    },
+    "No match means the tested dictionaries contained no matching candidate. It does not prove resistance to other checks.": {
+      "en": "No match means the tested dictionaries contained no matching candidate. It does not prove resistance to other checks.",
+      "ru": "«Не найден» означает, что проверенные словари не дали совпадения. Это не доказывает стойкость пароля при других способах проверки.",
+      "zh": "未找到匹配仅表示已测试的字典中没有匹配候选密码，并不能证明密码能够抵抗其他检查方式。"
+    },
+    "· Workload": {
+      "en": "· Workload",
+      "ru": "· Нагрузка",
+      "zh": "· 负载"
+    },
+    "· Partial catalog shown": {
+      "en": "· Partial catalog shown",
+      "ru": "· Показана часть каталога",
+      "zh": "· 仅显示部分目录"
+    },
+    "· pass": {
+      "en": "· pass",
+      "ru": "· проход",
+      "zh": "· 轮次"
+    },
+    "B": {
+      "en": "B",
+      "ru": "Б",
+      "zh": "B"
+    },
+    "No time limit": {
+      "en": "No time limit",
+      "ru": "Без ограничения времени",
+      "zh": "不限时"
+    },
+    "No match": {
+      "en": "No match",
+      "ru": "Без совпадений",
+      "zh": "未找到匹配"
+    },
+    "Dictionary library": {
+      "en": "Dictionary library",
+      "ru": "Библиотека словарей",
+      "zh": "字典库"
+    },
+    "Queued": {
+      "en": "Queued",
+      "ru": "В очереди",
+      "zh": "已排队"
+    },
+    "TIME": {
+      "en": "TIME",
+      "ru": "ВРЕМЯ",
+      "zh": "时间"
+    },
+    "COMPUTE": {
+      "en": "COMPUTE",
+      "ru": "ВЫЧИСЛЕНИЯ",
+      "zh": "计算"
+    },
+    "Your capture": {
+      "en": "Your capture",
+      "ru": "Ваш захват",
+      "zh": "您的抓包文件"
+    },
+    "Your username": {
+      "en": "Your username",
+      "ru": "Ваш логин",
+      "zh": "您的用户名"
+    },
+    "Your password": {
+      "en": "Your password",
+      "ru": "Ваш пароль",
+      "zh": "您的密码"
+    },
+    "Your results": {
+      "en": "Your results",
+      "ru": "Ваш результат",
+      "zh": "您的结果"
+    },
+    "Your captures, results and recovery history.": {
+      "en": "Your captures, results and recovery history.",
+      "ru": "Ваши захваты, результаты и история каждого пароля.",
+      "zh": "您的抓包文件、结果和密码恢复历史。"
+    },
+    "Your dictionaries": {
+      "en": "Your dictionaries",
+      "ru": "Ваши словари",
+      "zh": "您的字典"
+    },
+    "Type CLEAR": {
+      "en": "Type CLEAR",
+      "ru": "Введите ОЧИСТИТЬ",
+      "zh": "输入 CLEAR"
+    },
+    "Owner": {
+      "en": "Owner",
+      "ru": "Владелец",
+      "zh": "所有者"
+    },
+    "Sign in to continue auditing your networks.": {
+      "en": "Sign in to continue auditing your networks.",
+      "ru": "Войдите, чтобы продолжить проверку сетей.",
+      "zh": "登录以继续检查您的网络。"
+    },
+    "Sign in": {
+      "en": "Sign in",
+      "ru": "Войти в кабинет",
+      "zh": "登录"
+    },
+    "History shows the duration of the entire pass, not the exact time a password was recovered.": {
+      "en": "History shows the duration of the entire pass, not the exact time a password was recovered.",
+      "ru": "Время в истории — длительность общего прохода, а не точное время нахождения этого пароля.",
+      "zh": "历史记录显示整轮运行的时长，而非密码被恢复的准确时间。"
+    },
+    "Job duration": {
+      "en": "Job duration",
+      "ru": "Время задачи",
+      "zh": "任务时长"
+    },
+    "All networks ↗": {
+      "en": "All networks ↗",
+      "ru": "Все сети ↗",
+      "zh": "所有网络 ↗"
+    },
+    "W": {
+      "en": "W",
+      "ru": "Вт",
+      "zh": "W"
+    },
+    "Sign in · iEasyHash": {
+      "en": "Sign in · iEasyHash",
+      "ru": "Вход · iEasyHash",
+      "zh": "登录 · iEasyHash"
+    },
+    "Signing in…": {
+      "en": "Signing in…",
+      "ru": "Входим…",
+      "zh": "正在登录…"
+    },
+    "Select dictionaries from the library.": {
+      "en": "Select dictionaries from the library.",
+      "ru": "Выберите словари в библиотеке.",
+      "zh": "请从字典库中选择字典。"
+    },
+    "Choose dictionaries and pass order": {
+      "en": "Choose dictionaries and pass order",
+      "ru": "Выберите словари и порядок проходов",
+      "zh": "选择字典及运行顺序"
+    },
+    "Select the password and copy it manually.": {
+      "en": "Select the password and copy it manually.",
+      "ru": "Выделите пароль и скопируйте вручную.",
+      "zh": "请选中密码并手动复制。"
+    },
+    "Sign out": {
+      "en": "Sign out",
+      "ru": "Выйти",
+      "zh": "退出登录"
+    },
+    "Running": {
+      "en": "Running",
+      "ru": "Выполняется",
+      "zh": "运行中"
+    },
+    "High · maximum GPU resources": {
+      "en": "High · maximum GPU resources",
+      "ru": "Высокая · максимум ресурсов GPU",
+      "zh": "高 · 最大 GPU 资源"
+    },
+    "Computation": {
+      "en": "Computation",
+      "ru": "Вычисления",
+      "zh": "计算"
+    },
+    "Server compute.": {
+      "en": "Server compute.",
+      "ru": "Вычисления в офисе.",
+      "zh": "服务器计算。"
+    },
+    "Move up": {
+      "en": "Move up",
+      "ru": "Выше",
+      "zh": "上移"
+    },
+    "GB": {
+      "en": "GB",
+      "ru": "ГБ",
+      "zh": "GB"
+    },
+    "Ready to audit?": {
+      "en": "Ready to audit?",
+      "ru": "Готовы к проверке?",
+      "zh": "准备好检查了吗？"
+    },
+    "Import an existing file into your private workspace.": {
+      "en": "Import an existing file into your private workspace.",
+      "ru": "Готовый файл загружается в закрытую рабочую область.",
+      "zh": "将已有文件导入您的私有工作区。"
+    },
+    "DURATION": {
+      "en": "DURATION",
+      "ru": "ДЛИТЕЛЬНОСТЬ",
+      "zh": "时长"
+    },
+    "OWNER ACCESS": {
+      "en": "OWNER ACCESS",
+      "ru": "ДОСТУП ВЛАДЕЛЬЦА",
+      "zh": "所有者访问"
+    },
+    "Add": {
+      "en": "Add",
+      "ru": "Добавить",
+      "zh": "添加"
+    },
+    "Add to queue": {
+      "en": "Add to queue",
+      "ru": "Добавить в очередь",
+      "zh": "加入队列"
+    },
+    "Added": {
+      "en": "Added",
+      "ru": "Добавлен",
+      "zh": "已添加"
+    },
+    "Records added:": {
+      "en": "Records added:",
+      "ru": "Добавлено записей:",
+      "zh": "已添加记录："
+    },
+    "Importing network": {
+      "en": "Importing network",
+      "ru": "Добавляем сеть",
+      "zh": "正在导入网络"
+    },
+    "Importing dictionaries": {
+      "en": "Importing dictionaries",
+      "ru": "Добавляем словари",
+      "zh": "正在导入字典"
+    },
+    "Import your network capture, choose dictionaries": {
+      "en": "Import your network capture, choose dictionaries",
+      "ru": "Добавьте захват своей сети, выберите словари",
+      "zh": "导入您的网络抓包文件，选择字典"
+    },
+    "Import your network capture to get started.": {
+      "en": "Import your network capture to get started.",
+      "ru": "Добавьте захват своей сети, чтобы начать.",
+      "zh": "导入您的网络抓包文件以开始使用。"
+    },
+    "Access and password": {
+      "en": "Access and password",
+      "ru": "Доступ и пароль",
+      "zh": "访问与密码"
+    },
+    "Account access": {
+      "en": "Account access",
+      "ru": "Доступ к кабинету",
+      "zh": "账户访问"
+    },
+    "Driver": {
+      "en": "Driver",
+      "ru": "Драйвер",
+      "zh": "驱动程序"
+    },
+    "Not recovered yet": {
+      "en": "Not recovered yet",
+      "ru": "Ещё не найден",
+      "zh": "尚未恢复"
+    },
+    "Pass log": {
+      "en": "Pass log",
+      "ru": "Журнал прохода",
+      "zh": "运行日志"
+    },
+    "Log ↗": {
+      "en": "Log ↗",
+      "ru": "Журнал ↗",
+      "zh": "日志 ↗"
+    },
+    "JOB": {
+      "en": "JOB",
+      "ru": "ЗАДАЧА",
+      "zh": "任务"
+    },
+    "Completed": {
+      "en": "Completed",
+      "ru": "Завершено",
+      "zh": "已完成"
+    },
+    "Completed jobs, recovered passwords and engine logs.": {
+      "en": "Completed jobs, recovered passwords and engine logs.",
+      "ru": "Завершённые задачи, найденные пароли и журналы движка.",
+      "zh": "已完成的任务、已恢复的密码和引擎日志。"
+    },
+    "Uploading": {
+      "en": "Uploading",
+      "ru": "Загружаем",
+      "zh": "正在上传"
+    },
+    "Loading log…": {
+      "en": "Loading log…",
+      "ru": "Загружаем журнал…",
+      "zh": "正在加载日志…"
+    },
+    "Loading server status…": {
+      "en": "Loading server status…",
+      "ru": "Загружаем состояние сервера…",
+      "zh": "正在加载服务器状态…"
+    },
+    "Utilization": {
+      "en": "Utilization",
+      "ru": "Загрузка",
+      "zh": "使用率"
+    },
+    "The upload timed out.": {
+      "en": "The upload timed out.",
+      "ru": "Загрузка заняла слишком много времени.",
+      "zh": "上传超时。"
+    },
+    "Downloading…": {
+      "en": "Downloading…",
+      "ru": "Загрузка…",
+      "zh": "正在下载…"
+    },
+    "Job": {
+      "en": "Job",
+      "ru": "Задача",
+      "zh": "任务"
+    },
+    "Jobs": {
+      "en": "Jobs",
+      "ru": "Задачи",
+      "zh": "任务"
+    },
+    "Jobs saved on the server": {
+      "en": "Jobs saved on the server",
+      "ru": "Задачи сохраняются на сервере",
+      "zh": "任务保存在服务器上"
+    },
+    "Private workspace": {
+      "en": "Private workspace",
+      "ru": "Закрытое рабочее пространство",
+      "zh": "私有工作区"
+    },
+    "Private server storage": {
+      "en": "Private server storage",
+      "ru": "Закрытое серверное хранилище",
+      "zh": "服务器私有存储"
+    },
+    "Close": {
+      "en": "Close",
+      "ru": "Закрыть",
+      "zh": "关闭"
+    },
+    "Run on server ↗": {
+      "en": "Run on server ↗",
+      "ru": "Запустить на сервере ↗",
+      "zh": "在服务器上运行 ↗"
+    },
+    "Start audit": {
+      "en": "Start audit",
+      "ru": "Запустить проверку",
+      "zh": "开始检查"
+    },
+    "Captures, dictionaries and computation stay on your server.": {
+      "en": "Captures, dictionaries and computation stay on your server.",
+      "ru": "Захваты, словари и вычисления — на вашем сервере.",
+      "zh": "抓包文件、字典和计算均保留在您的服务器上。"
+    },
+    "Captures, hashes, results and job history will be deleted. Dictionaries and queue order will be kept.": {
+      "en": "Captures, hashes, results and job history will be deleted. Dictionaries and queue order will be kept.",
+      "ru": "Захваты, хеши, результаты и история задач будут удалены. Словари и порядок очереди сохранятся.",
+      "zh": "抓包文件、哈希、结果和任务历史将被删除。字典和队列顺序将保留。"
+    },
+    "Your audit jobs will appear here.": {
+      "en": "Your audit jobs will appear here.",
+      "ru": "Здесь появятся запущенные проверки.",
+      "zh": "您的检查任务将显示在这里。"
+    },
+    "Your networks.": {
+      "en": "Your networks.",
+      "ru": "Знакомые сети.",
+      "zh": "您的网络。"
+    },
+    "NETWORK HISTORY": {
+      "en": "NETWORK HISTORY",
+      "ru": "ИСТОРИЯ СЕТИ",
+      "zh": "网络历史"
+    },
+    "SOURCE": {
+      "en": "SOURCE",
+      "ru": "ИСТОЧНИК",
+      "zh": "来源"
+    },
+    "History": {
+      "en": "History",
+      "ru": "История",
+      "zh": "历史"
+    },
+    "History and recovered passwords require sign-in.": {
+      "en": "History and recovered passwords require sign-in.",
+      "ru": "История и найденные пароли доступны только после входа.",
+      "zh": "登录后才能查看历史记录和已恢复的密码。"
+    },
+    "No dictionary passes yet.": {
+      "en": "No dictionary passes yet.",
+      "ru": "История словарных проходов пока пуста.",
+      "zh": "尚无字典运行记录。"
+    },
+    "KB": {
+      "en": "KB",
+      "ru": "КБ",
+      "zh": "KB"
+    },
+    "Every pass, recorded.": {
+      "en": "Every pass, recorded.",
+      "ru": "Каждый проход на виду.",
+      "zh": "记录每一轮运行。"
+    },
+    "One dictionary per pass": {
+      "en": "One dictionary per pass",
+      "ru": "Каждый словарь — отдельный проход",
+      "zh": "每轮使用一个字典"
+    },
+    "How the console works": {
+      "en": "How the console works",
+      "ru": "Как работает кабинет",
+      "zh": "控制台工作原理"
+    },
+    "Copy": {
+      "en": "Copy",
+      "ru": "Копировать",
+      "zh": "复制"
+    },
+    "Limit": {
+      "en": "Limit",
+      "ru": "Лимит",
+      "zh": "时限"
+    },
+    "Time limit per pass, minutes": {
+      "en": "Time limit per pass, minutes",
+      "ru": "Лимит каждого прохода, минут",
+      "zh": "每轮时限（分钟）"
+    },
+    "A private console for auditing your Wi-Fi networks.": {
+      "en": "A private console for auditing your Wi-Fi networks.",
+      "ru": "Личный кабинет для проверки своих Wi-Fi сетей.",
+      "zh": "用于检查您自己的 Wi-Fi 网络的私有控制台。"
+    },
+    "Username": {
+      "en": "Username",
+      "ru": "Логин",
+      "zh": "用户名"
+    },
+    "MB": {
+      "en": "MB",
+      "ru": "МБ",
+      "zh": "MB"
+    },
+    "Captures must be no larger than 64 MB.": {
+      "en": "Captures must be no larger than 64 MB.",
+      "ru": "Максимальный размер захвата — 64 МБ.",
+      "zh": "抓包文件不能超过 64 MB。"
+    },
+    "Dictionaries must be no larger than 2 GB.": {
+      "en": "Dictionaries must be no larger than 2 GB.",
+      "ru": "Максимальный размер словаря — 2 ГБ.",
+      "zh": "字典文件不能超过 2 GB。"
+    },
+    "My networks": {
+      "en": "My networks",
+      "ru": "Мои сети",
+      "zh": "我的网络"
+    },
+    "Power": {
+      "en": "Power",
+      "ru": "Мощность",
+      "zh": "功耗"
+    },
+    "RECOVERED": {
+      "en": "RECOVERED",
+      "ru": "НАЙДЕНО",
+      "zh": "已恢复"
+    },
+    "STARTED": {
+      "en": "STARTED",
+      "ru": "НАЧАЛО",
+      "zh": "开始时间"
+    },
+    "Paused": {
+      "en": "Paused",
+      "ru": "На паузе",
+      "zh": "已暂停"
+    },
+    "Online": {
+      "en": "Online",
+      "ru": "На связи",
+      "zh": "在线"
+    },
+    "Load": {
+      "en": "Load",
+      "ru": "Нагрузка",
+      "zh": "负载"
+    },
+    "GPU workload": {
+      "en": "GPU workload",
+      "ru": "Нагрузка GPU",
+      "zh": "GPU 负载"
+    },
+    "Select a network for details": {
+      "en": "Select a network for details",
+      "ru": "Нажмите на сеть для подробностей",
+      "zh": "选择网络以查看详情"
+    },
+    "Job name": {
+      "en": "Job name",
+      "ru": "Название задачи",
+      "zh": "任务名称"
+    },
+    "Recovered": {
+      "en": "Recovered",
+      "ru": "Найден",
+      "zh": "已恢复"
+    },
+    "Recovered results and history will be kept.": {
+      "en": "Recovered results and history will be kept.",
+      "ru": "Найденные результаты и история сохранятся.",
+      "zh": "已恢复的结果和历史记录将保留。"
+    },
+    "Find files ↗": {
+      "en": "Find files ↗",
+      "ru": "Найти файлы ↗",
+      "zh": "查找文件 ↗"
+    },
+    "At least 14 characters. Changing it signs out all sessions.": {
+      "en": "At least 14 characters. Changing it signs out all sessions.",
+      "ru": "Не менее 14 символов. После смены все сессии будут завершены.",
+      "zh": "至少 14 个字符。更改后所有会话都将退出。"
+    },
+    "Not tested": {
+      "en": "Not tested",
+      "ru": "Не проверен",
+      "zh": "未测试"
+    },
+    "Sign-in failed": {
+      "en": "Sign-in failed",
+      "ru": "Не удалось войти",
+      "zh": "登录失败"
+    },
+    "Could not download results.": {
+      "en": "Could not download results.",
+      "ru": "Не удалось скачать результаты.",
+      "zh": "无法下载结果。"
+    },
+    "Unavailable": {
+      "en": "Unavailable",
+      "ru": "Недоступен",
+      "zh": "不可用"
+    },
+    "Not available": {
+      "en": "Not available",
+      "ru": "Недоступна",
+      "zh": "不可用"
+    },
+    "Move down": {
+      "en": "Move down",
+      "ru": "Ниже",
+      "zh": "下移"
+    },
+    "Low · server is handling other work": {
+      "en": "Low · server is handling other work",
+      "ru": "Низкая · сервер занят другими задачами",
+      "zh": "低 · 服务器正在处理其他任务"
+    },
+    "New audit": {
+      "en": "New audit",
+      "ru": "Новая проверка",
+      "zh": "新建检查"
+    },
+    "The new passwords do not match.": {
+      "en": "The new passwords do not match.",
+      "ru": "Новые пароли не совпадают.",
+      "zh": "两次输入的新密码不一致。"
+    },
+    "New password": {
+      "en": "New password",
+      "ru": "Новый пароль",
+      "zh": "新密码"
+    },
+    "SIZE": {
+      "en": "SIZE",
+      "ru": "ОБЪЁМ",
+      "zh": "大小"
+    },
+    "QUEUE": {
+      "en": "QUEUE",
+      "ru": "ОЧЕРЕДЬ",
+      "zh": "队列"
+    },
+    "Overview": {
+      "en": "Overview",
+      "ru": "Обзор",
+      "zh": "概览"
+    },
+    "Normal · recommended": {
+      "en": "Normal · recommended",
+      "ru": "Обычная · рекомендуется",
+      "zh": "普通 · 推荐"
+    },
+    "One GPU job at a time": {
+      "en": "One GPU job at a time",
+      "ru": "Одна GPU-задача одновременно",
+      "zh": "一次运行一个 GPU 任务"
+    },
+    "Ready": {
+      "en": "Ready",
+      "ru": "Ожидание",
+      "zh": "就绪"
+    },
+    "Main navigation": {
+      "en": "Main navigation",
+      "ru": "Основная навигация",
+      "zh": "主导航"
+    },
+    "Remaining": {
+      "en": "Remaining",
+      "ru": "Осталось",
+      "zh": "剩余时间"
+    },
+    "Stop": {
+      "en": "Stop",
+      "ru": "Остановить",
+      "zh": "停止"
+    },
+    "Stop this audit?": {
+      "en": "Stop this audit?",
+      "ru": "Остановить проверку?",
+      "zh": "停止此次检查？"
+    },
+    "Temperature cutoff": {
+      "en": "Temperature cutoff",
+      "ru": "Остановка по температуре",
+      "zh": "温度停止阈值"
+    },
+    "Stopping…": {
+      "en": "Stopping…",
+      "ru": "Остановка…",
+      "zh": "正在停止…"
+    },
+    "Stopped": {
+      "en": "Stopped",
+      "ru": "Остановлено",
+      "zh": "已停止"
+    },
+    "View history ↗": {
+      "en": "View history ↗",
+      "ru": "Открыть историю ↗",
+      "zh": "查看历史 ↗"
+    },
+    "Open network": {
+      "en": "Open network",
+      "ru": "Открыть сеть",
+      "zh": "打开网络"
+    },
+    "Cancel": {
+      "en": "Cancel",
+      "ru": "Отмена",
+      "zh": "取消"
+    },
+    "Cancel job": {
+      "en": "Cancel job",
+      "ru": "Отменить",
+      "zh": "取消任务"
+    },
+    "Server host": {
+      "en": "Server host",
+      "ru": "Офисный сервер",
+      "zh": "服务器主机"
+    },
+    "Dictionary queue": {
+      "en": "Dictionary queue",
+      "ru": "Очередь словарей",
+      "zh": "字典队列"
+    },
+    "Clear": {
+      "en": "Clear",
+      "ru": "Очистить",
+      "zh": "清空"
+    },
+    "Clear workspace": {
+      "en": "Clear workspace",
+      "ru": "Очистить область",
+      "zh": "清空工作区"
+    },
+    "Clear the workspace?": {
+      "en": "Clear the workspace?",
+      "ru": "Очистить рабочую область?",
+      "zh": "清空工作区？"
+    },
+    "Failed": {
+      "en": "Failed",
+      "ru": "Ошибка",
+      "zh": "失败"
+    },
+    "File upload failed": {
+      "en": "File upload failed",
+      "ru": "Ошибка загрузки файла",
+      "zh": "文件上传失败"
+    },
+    "PASSWORD": {
+      "en": "PASSWORD",
+      "ru": "ПАРОЛЬ",
+      "zh": "密码"
+    },
+    "ORDER": {
+      "en": "ORDER",
+      "ru": "ПОРЯДОК",
+      "zh": "顺序"
+    },
+    "AUDIT SEQUENCE": {
+      "en": "AUDIT SEQUENCE",
+      "ru": "ПОСЛЕДОВАТЕЛЬНОСТЬ ПРОВЕРКИ",
+      "zh": "检查顺序"
+    },
+    "PASSES": {
+      "en": "PASSES",
+      "ru": "ПРОХОДЫ",
+      "zh": "轮次"
+    },
+    "Memory": {
+      "en": "Memory",
+      "ru": "Память",
+      "zh": "显存"
+    },
+    "Passwords recovered": {
+      "en": "Passwords recovered",
+      "ru": "Пароли найдены",
+      "zh": "已恢复密码"
+    },
+    "Password": {
+      "en": "Password",
+      "ru": "Пароль",
+      "zh": "密码"
+    },
+    "Password copied.": {
+      "en": "Password copied.",
+      "ru": "Пароль скопирован.",
+      "zh": "密码已复制。"
+    },
+    "Pausing…": {
+      "en": "Pausing…",
+      "ru": "Пауза…",
+      "zh": "正在暂停…"
+    },
+    "Confirm new password": {
+      "en": "Confirm new password",
+      "ru": "Повторите новый пароль",
+      "zh": "确认新密码"
+    },
+    "Under control.": {
+      "en": "Under control.",
+      "ru": "Под контролем.",
+      "zh": "尽在掌握。"
+    },
+    "Preparing upload…": {
+      "en": "Preparing upload…",
+      "ru": "Подготавливаем загрузку…",
+      "zh": "正在准备上传…"
+    },
+    "Connecting…": {
+      "en": "Connecting…",
+      "ru": "Подключение…",
+      "zh": "正在连接…"
+    },
+    "Details ↗": {
+      "en": "Details ↗",
+      "ru": "Подробнее ↗",
+      "zh": "详情 ↗"
+    },
+    "Confirm": {
+      "en": "Confirm",
+      "ru": "Подтвердить",
+      "zh": "确认"
+    },
+    "No matching files.": {
+      "en": "No matching files.",
+      "ru": "Подходящих файлов нет.",
+      "zh": "没有符合条件的文件。"
+    },
+    "Search networks": {
+      "en": "Search networks",
+      "ru": "Поиск сети",
+      "zh": "搜索网络"
+    },
+    "Search network or file…": {
+      "en": "Search network or file…",
+      "ru": "Поиск сети или файла…",
+      "zh": "搜索网络或文件…"
+    },
+    "Search dictionaries": {
+      "en": "Search dictionaries",
+      "ru": "Поиск словаря",
+      "zh": "搜索字典"
+    },
+    "Search dictionaries…": {
+      "en": "Search dictionaries…",
+      "ru": "Поиск словаря…",
+      "zh": "搜索字典…"
+    },
+    "Show": {
+      "en": "Show",
+      "ru": "Показать",
+      "zh": "显示"
+    },
+    "Show password": {
+      "en": "Show password",
+      "ru": "Показать пароль",
+      "zh": "显示密码"
+    },
+    "Latest 100 jobs": {
+      "en": "Latest 100 jobs",
+      "ru": "Последние 100 задач",
+      "zh": "最近 100 个任务"
+    },
+    "Latest 100 passes": {
+      "en": "Latest 100 passes",
+      "ru": "Последние 100 проходов",
+      "zh": "最近 100 轮运行"
+    },
+    "Interrupted": {
+      "en": "Interrupted",
+      "ru": "Прервано",
+      "zh": "已中断"
+    },
+    "Resume uses a checkpoint. If none was written, the current dictionary starts again.": {
+      "en": "Resume uses a checkpoint. If none was written, the current dictionary starts again.",
+      "ru": "При продолжении используется checkpoint. Если он ещё не записан, текущий словарь будет проверен заново.",
+      "zh": "继续时将使用检查点。如果尚未写入检查点，当前字典将重新开始。"
+    },
+    "Accepts existing PCAP, PCAPNG, CAP captures and WPA 22000 hashes. The app does not capture traffic or connect to networks.": {
+      "en": "Accepts existing PCAP, PCAPNG, CAP captures and WPA 22000 hashes. The app does not capture traffic or connect to networks.",
+      "ru": "Принимаются готовые захваты PCAP, PCAPNG, CAP и WPA-хеши 22000. Приложение не собирает трафик и не подключается к сетям.",
+      "zh": "支持已有的 PCAP、PCAPNG、CAP 抓包文件和 WPA 22000 哈希。本应用不抓取流量，也不连接网络。"
+    },
+    "Wi-Fi audit": {
+      "en": "Wi-Fi audit",
+      "ru": "Проверка Wi-Fi",
+      "zh": "Wi-Fi 检查"
+    },
+    "Audit queued.": {
+      "en": "Audit queued.",
+      "ru": "Проверка поставлена в очередь.",
+      "zh": "检查已加入队列。"
+    },
+    "Audit jobs": {
+      "en": "Audit jobs",
+      "ru": "Проверки",
+      "zh": "检查任务"
+    },
+    "Check the entered values.": {
+      "en": "Check the entered values.",
+      "ru": "Проверьте введённые данные.",
+      "zh": "请检查输入内容。"
+    },
+    "Audit the password strength of your own Wi-Fi networks.": {
+      "en": "Audit the password strength of your own Wi-Fi networks.",
+      "ru": "Проверяйте стойкость паролей своих Wi-Fi сетей.",
+      "zh": "检查您自己的 Wi-Fi 网络密码强度。"
+    },
+    "Pass progress": {
+      "en": "Pass progress",
+      "ru": "Прогресс прохода",
+      "zh": "运行进度"
+    },
+    "Resume ↗": {
+      "en": "Resume ↗",
+      "ru": "Продолжить ↗",
+      "zh": "继续 ↗"
+    },
+    "Skip this dictionary?": {
+      "en": "Skip this dictionary?",
+      "ru": "Пропустить словарь?",
+      "zh": "跳过此字典？"
+    },
+    "Skipped": {
+      "en": "Skipped",
+      "ru": "Пропущено",
+      "zh": "已跳过"
+    },
+    "No passes yet.": {
+      "en": "No passes yet.",
+      "ru": "Проходов ещё не было.",
+      "zh": "尚无运行记录。"
+    },
+    "Public text files up to 50 MB. Hashes and passwords are never sent to GitHub.": {
+      "en": "Public text files up to 50 MB. Hashes and passwords are never sent to GitHub.",
+      "ru": "Публичные текстовые файлы до 50 МБ. Хеши и пароли на GitHub не отправляются.",
+      "zh": "支持不超过 50 MB 的公开文本文件。哈希和密码不会发送到 GitHub。"
+    },
+    "Public repository": {
+      "en": "Public repository",
+      "ru": "Публичный репозиторий",
+      "zh": "公开仓库"
+    },
+    "WORK AREA": {
+      "en": "WORK AREA",
+      "ru": "РАБОЧАЯ ОБЛАСТЬ",
+      "zh": "工作区域"
+    },
+    "WORKSPACE": {
+      "en": "WORKSPACE",
+      "ru": "РАБОЧЕЕ ПРОСТРАНСТВО",
+      "zh": "工作区"
+    },
+    "RESULT": {
+      "en": "RESULT",
+      "ru": "РЕЗУЛЬТАТ",
+      "zh": "结果"
+    },
+    "Workspace": {
+      "en": "Workspace",
+      "ru": "Рабочее пространство",
+      "zh": "工作区"
+    },
+    "Working files": {
+      "en": "Working files",
+      "ru": "Рабочие файлы",
+      "zh": "工作文件"
+    },
+    "Mode": {
+      "en": "Mode",
+      "ru": "Режим",
+      "zh": "模式"
+    },
+    "Result": {
+      "en": "Result",
+      "ru": "Результат",
+      "zh": "结果"
+    },
+    "Welcome back.": {
+      "en": "Welcome back.",
+      "ru": "С возвращением.",
+      "zh": "欢迎回来。"
+    },
+    "NETWORKS": {
+      "en": "NETWORKS",
+      "ru": "СЕТИ",
+      "zh": "网络"
+    },
+    "NETWORK / SSID": {
+      "en": "NETWORK / SSID",
+      "ru": "СЕТЬ / SSID",
+      "zh": "网络 / SSID"
+    },
+    "DICTIONARIES": {
+      "en": "DICTIONARIES",
+      "ru": "СЛОВАРИ",
+      "zh": "字典"
+    },
+    "DICTIONARY": {
+      "en": "DICTIONARY",
+      "ru": "СЛОВАРЬ",
+      "zh": "字典"
+    },
+    "DICTIONARY / SOURCE": {
+      "en": "DICTIONARY / SOURCE",
+      "ru": "СЛОВАРЬ / ИСТОЧНИК",
+      "zh": "字典 / 来源"
+    },
+    "QUEUE SNAPSHOT": {
+      "en": "QUEUE SNAPSHOT",
+      "ru": "СНИМОК ОЧЕРЕДИ",
+      "zh": "队列快照"
+    },
+    "STATUS": {
+      "en": "STATUS",
+      "ru": "СОСТОЯНИЕ",
+      "zh": "状态"
+    },
+    "LINES": {
+      "en": "LINES",
+      "ru": "СТРОКИ",
+      "zh": "行数"
+    },
+    "Free disk space": {
+      "en": "Free disk space",
+      "ru": "Свободно на диске",
+      "zh": "可用磁盘空间"
+    },
+    "Server": {
+      "en": "Server",
+      "ru": "Сервер",
+      "zh": "服务器"
+    },
+    "The server rejected the file. The proxy upload limit may have been exceeded.": {
+      "en": "The server rejected the file. The proxy upload limit may have been exceeded.",
+      "ru": "Сервер не принял файл. Возможно, превышен лимит загрузки туннеля.",
+      "zh": "服务器拒绝了文件，可能超出了代理的上传限制。"
+    },
+    "Server unavailable. Try again later.": {
+      "en": "Server unavailable. Try again later.",
+      "ru": "Сервер недоступен. Повторите позже.",
+      "zh": "服务器不可用，请稍后重试。"
+    },
+    "Session expired": {
+      "en": "Session expired",
+      "ru": "Сессия завершилась",
+      "zh": "会话已过期"
+    },
+    "Networks to audit": {
+      "en": "Networks to audit",
+      "ru": "Сети для проверки",
+      "zh": "要检查的网络"
+    },
+    "Networks and captures": {
+      "en": "Networks and captures",
+      "ru": "Сети и захваты",
+      "zh": "网络与抓包文件"
+    },
+    "System": {
+      "en": "System",
+      "ru": "Система",
+      "zh": "系统"
+    },
+    "Speed": {
+      "en": "Speed",
+      "ru": "Скорость",
+      "zh": "速度"
+    },
+    "Hide": {
+      "en": "Hide",
+      "ru": "Скрыть",
+      "zh": "隐藏"
+    },
+    "Hide password": {
+      "en": "Hide password",
+      "ru": "Скрыть пароль",
+      "zh": "隐藏密码"
+    },
+    "Next dictionary →": {
+      "en": "Next dictionary →",
+      "ru": "Следующий словарь →",
+      "zh": "下一个字典 →"
+    },
+    "Words matter.": {
+      "en": "Words matter.",
+      "ru": "Слова имеют вес.",
+      "zh": "字词很重要。"
+    },
+    "Dictionaries": {
+      "en": "Dictionaries",
+      "ru": "Словари",
+      "zh": "字典"
+    },
+    "Queued dictionaries": {
+      "en": "Queued dictionaries",
+      "ru": "Словари в очереди",
+      "zh": "队列中的字典"
+    },
+    "GitHub dictionaries": {
+      "en": "GitHub dictionaries",
+      "ru": "Словари из GitHub",
+      "zh": "GitHub 字典"
+    },
+    "No dictionaries found. Upload a file or open GitHub.": {
+      "en": "No dictionaries found. Upload a file or open GitHub.",
+      "ru": "Словари не найдены. Загрузите файл или откройте GitHub.",
+      "zh": "未找到字典。请上传文件或打开 GitHub。"
+    },
+    "Dictionaries are stored on the server and the queue persists between sessions. File size and line count are not the number of valid WPA candidates.": {
+      "en": "Dictionaries are stored on the server and the queue persists between sessions. File size and line count are not the number of valid WPA candidates.",
+      "ru": "Словари хранятся на офисном сервере. Очередь сохраняется между сессиями. Размер и число строк не равны числу допустимых WPA-паролей.",
+      "zh": "字典存储在服务器上，队列会在会话之间保留。文件大小和行数不等于有效 WPA 候选密码的数量。"
+    },
+    "Dictionary passes": {
+      "en": "Dictionary passes",
+      "ru": "Словарные проходы",
+      "zh": "字典运行记录"
+    },
+    "Dictionary": {
+      "en": "Dictionary",
+      "ru": "Словарь",
+      "zh": "字典"
+    },
+    "Dictionary available in the library.": {
+      "en": "Dictionary available in the library.",
+      "ru": "Словарь доступен в библиотеке.",
+      "zh": "字典已加入字典库。"
+    },
+    "Change password": {
+      "en": "Change password",
+      "ru": "Сменить пароль",
+      "zh": "更改密码"
+    },
+    "Build your library and arrange the audit order.": {
+      "en": "Build your library and arrange the audit order.",
+      "ru": "Соберите библиотеку и задайте порядок проверки.",
+      "zh": "构建字典库并设置检查顺序。"
+    },
+    "Connection interrupted. Retry the upload.": {
+      "en": "Connection interrupted. Retry the upload.",
+      "ru": "Соединение прервано. Повторите загрузку.",
+      "zh": "连接已中断，请重新上传。"
+    },
+    "Created": {
+      "en": "Created",
+      "ru": "Создана",
+      "zh": "创建时间"
+    },
+    "Status": {
+      "en": "Status",
+      "ru": "Состояние",
+      "zh": "状态"
+    },
+    "GTX 1070, worker and audit tool status.": {
+      "en": "GTX 1070, worker and audit tool status.",
+      "ru": "Состояние GTX 1070, worker и инструментов проверки.",
+      "zh": "GTX 1070、工作进程和检查工具的状态。"
+    },
+    "TB": {
+      "en": "TB",
+      "ru": "ТБ",
+      "zh": "TB"
+    },
+    "TELEMETRY / LIVE": {
+      "en": "TELEMETRY / LIVE",
+      "ru": "ТЕЛЕМЕТРИЯ / LIVE",
+      "zh": "遥测 / 实时"
+    },
+    "Current audit": {
+      "en": "Current audit",
+      "ru": "Текущая проверка",
+      "zh": "当前检查"
+    },
+    "Current password": {
+      "en": "Current password",
+      "ru": "Текущий пароль",
+      "zh": "当前密码"
+    },
+    "The current pass will end and the queue will continue with the next dictionary.": {
+      "en": "The current pass will end and the queue will continue with the next dictionary.",
+      "ru": "Текущий проход завершится, очередь продолжится со следующего словаря.",
+      "zh": "当前轮次将结束，队列会继续运行下一个字典。"
+    },
+    "Temperature": {
+      "en": "Temperature",
+      "ru": "Температура",
+      "zh": "温度"
+    },
+    "GPU temperature over recent minutes": {
+      "en": "GPU temperature over recent minutes",
+      "ru": "Температура GPU за последние минуты",
+      "zh": "最近几分钟的 GPU 温度"
+    },
+    "Your networks. Your server.": {
+      "en": "Your networks. Your server.",
+      "ru": "Только ваши сети. Только ваш сервер.",
+      "zh": "您的网络，您的服务器。"
+    },
+    "Remove from queue": {
+      "en": "Remove from queue",
+      "ru": "Убрать из очереди",
+      "zh": "从队列移除"
+    },
+    "Deleted": {
+      "en": "Deleted",
+      "ru": "Удалена",
+      "zh": "已删除"
+    },
+    "Delete dictionary": {
+      "en": "Delete dictionary",
+      "ru": "Удалить словарь",
+      "zh": "删除字典"
+    },
+    "Delete this dictionary?": {
+      "en": "Delete this dictionary?",
+      "ru": "Удалить словарь?",
+      "zh": "删除此字典？"
+    },
+    "Already present": {
+      "en": "Already present",
+      "ru": "Уже есть",
+      "zh": "已存在"
+    },
+    "Find out how strong": {
+      "en": "Find out how strong",
+      "ru": "Узнайте, насколько",
+      "zh": "了解您的"
+    },
+    "Manage dictionaries ↗": {
+      "en": "Manage dictionaries ↗",
+      "ru": "Управлять словарями ↗",
+      "zh": "管理字典 ↗"
+    },
+    "Accelerator": {
+      "en": "Accelerator",
+      "ru": "Ускоритель",
+      "zh": "加速设备"
+    },
+    "File received. Processing…": {
+      "en": "File received. Processing…",
+      "ru": "Файл получен. Обрабатываем…",
+      "zh": "文件已收到，正在处理…"
+    },
+    "Reading repository catalog…": {
+      "en": "Reading repository catalog…",
+      "ru": "Читаем каталог репозитория…",
+      "zh": "正在读取仓库目录…"
+    },
+    "Export results?": {
+      "en": "Export results?",
+      "ru": "Экспортировать результаты?",
+      "zh": "导出结果？"
+    },
+    "This dictionary is already in the library.": {
+      "en": "This dictionary is already in the library.",
+      "ru": "Этот словарь уже есть в библиотеке.",
+      "zh": "此字典已存在于字典库中。"
+    },
+    "will be removed from the library and queue.": {
+      "en": "will be removed from the library and queue.",
+      "ru": "будет удалён из библиотеки и очереди.",
+      "zh": "将从字典库和队列中移除。"
+    },
+    "in the library": {
+      "en": "in the library",
+      "ru": "в библиотеке",
+      "zh": "个字典在库中"
+    },
+    "added.": {
+      "en": "added.",
+      "ru": "добавлен.",
+      "zh": "已添加。"
+    },
+    "WPA records": {
+      "en": "WPA records",
+      "ru": "записей WPA",
+      "zh": "条 WPA 记录"
+    },
+    "records still unrecovered": {
+      "en": "records still unrecovered",
+      "ru": "записей ещё не восстановлено",
+      "zh": "条记录尚未恢复"
+    },
+    "and run the queue on your server.": {
+      "en": "and run the queue on your server.",
+      "ru": "и запустите очередь на офисном сервере.",
+      "zh": "并在服务器上运行队列。"
+    },
+    "min": {
+      "en": "min",
+      "ru": "мин",
+      "zh": "分钟"
+    },
+    "per pass": {
+      "en": "per pass",
+      "ru": "на проход",
+      "zh": "每轮"
+    },
+    "recovered": {
+      "en": "recovered",
+      "ru": "найдено",
+      "zh": "已恢复"
+    },
+    "s": {
+      "en": "s",
+      "ru": "с",
+      "zh": "秒"
+    },
+    "dictionaries · WPA 22000 · dictionary checks only.": {
+      "en": "dictionaries · WPA 22000 · dictionary checks only.",
+      "ru": "словарей · режим WPA 22000 · только словарная проверка.",
+      "zh": "个字典 · WPA 22000 模式 · 仅字典检查。"
+    },
+    "your password is.": {
+      "en": "your password is.",
+      "ru": "стойкий ваш пароль.",
+      "zh": "密码有多强。"
+    },
+    "lines ·": {
+      "en": "lines ·",
+      "ru": "строк ·",
+      "zh": "行 ·"
+    },
+    "GPU temperature": {
+      "en": "GPU temperature",
+      "ru": "температура GPU",
+      "zh": "GPU 温度"
+    },
+    "h": {
+      "en": "h",
+      "ru": "ч",
+      "zh": "小时"
+    },
+    "Ⅱ Pause": {
+      "en": "Ⅱ Pause",
+      "ru": "Ⅱ Пауза",
+      "zh": "Ⅱ 暂停"
+    },
+    "↓ Export CSV": {
+      "en": "↓ Export CSV",
+      "ru": "↓ Экспорт CSV",
+      "zh": "↓ 导出 CSV"
+    },
+    "■ Stop": {
+      "en": "■ Stop",
+      "ru": "■ Остановить",
+      "zh": "■ 停止"
+    },
+    "◈ GitHub catalog": {
+      "en": "◈ GitHub catalog",
+      "ru": "◈ Каталог GitHub",
+      "zh": "◈ GitHub 目录"
+    },
+    "◈ Private access": {
+      "en": "◈ Private access",
+      "ru": "◈ Частный доступ",
+      "zh": "◈ 私有访问"
+    },
+    "＋ Add network": {
+      "en": "＋ Add network",
+      "ru": "＋ Добавить сеть",
+      "zh": "＋ 添加网络"
+    },
+    "＋ Dictionary": {
+      "en": "＋ Dictionary",
+      "ru": "＋ Словарь",
+      "zh": "＋ 字典"
+    },
+    "GitHub rate limit reached. Try again later.": {
+      "en": "GitHub rate limit reached. Try again later.",
+      "ru": "GitHub ограничил запросы. Повторите позже.",
+      "zh": "已达到 GitHub 请求限制，请稍后重试。"
+    },
+    "Hashcat could not read saved results.": {
+      "en": "Hashcat could not read saved results.",
+      "ru": "Hashcat не смог прочитать сохранённые результаты.",
+      "zh": "Hashcat 无法读取已保存的结果。"
+    },
+    "The worker restarted. Resume the job to use its saved checkpoint, if available.": {
+      "en": "The worker restarted. Resume the job to use its saved checkpoint, if available.",
+      "ru": "Worker был перезапущен. Продолжите задачу; сохранённый checkpoint будет использован, если доступен.",
+      "zh": "工作进程已重启。请继续任务以使用已保存的检查点（如果存在）。"
+    },
+    "Worker unavailable. Check the Server page.": {
+      "en": "Worker unavailable. Check the Server page.",
+      "ru": "Worker недоступен. Проверьте раздел «Сервер».",
+      "zh": "工作进程不可用，请检查服务器页面。"
+    },
+    "[Result hidden; available in network details]": {
+      "en": "[Result hidden; available in network details]",
+      "ru": "[Результат скрыт; доступен в карточке сети]",
+      "zh": "[结果已隐藏；可在网络详情中查看]"
+    },
+    "The workspace allows up to 5,000 records.": {
+      "en": "The workspace allows up to 5,000 records.",
+      "ru": "В рабочей области допускается до 5000 записей.",
+      "zh": "工作区最多支持 5,000 条记录。"
+    },
+    "The file contains no usable WPA records.": {
+      "en": "The file contains no usable WPA records.",
+      "ru": "В файле нет пригодных записей WPA.",
+      "zh": "文件中没有可用的 WPA 记录。"
+    },
+    "External service unavailable. Try again later.": {
+      "en": "External service unavailable. Try again later.",
+      "ru": "Внешний сервис недоступен. Повторите позже.",
+      "zh": "外部服务不可用，请稍后重试。"
+    },
+    "Select networks with unrecovered passwords.": {
+      "en": "Select networks with unrecovered passwords.",
+      "ru": "Выберите сети, для которых пароль ещё не найден.",
+      "zh": "请选择密码尚未恢复的网络。"
+    },
+    "This action is unavailable in the current job state.": {
+      "en": "This action is unavailable in the current job state.",
+      "ru": "Действие недоступно в текущем состоянии задачи.",
+      "zh": "当前任务状态下无法执行此操作。"
+    },
+    "Type CLEAR to confirm.": {
+      "en": "Type CLEAR to confirm.",
+      "ru": "Для подтверждения введите ОЧИСТИТЬ.",
+      "zh": "输入 CLEAR 以确认。"
+    },
+    "Add at least one dictionary to the queue.": {
+      "en": "Add at least one dictionary to the queue.",
+      "ru": "Добавьте хотя бы один словарь в очередь.",
+      "zh": "请至少向队列添加一个字典。"
+    },
+    "Another job is already running.": {
+      "en": "Another job is already running.",
+      "ru": "Другая задача уже выполняется.",
+      "zh": "已有其他任务正在运行。"
+    },
+    "Log not found.": {
+      "en": "Log not found.",
+      "ru": "Журнал не найден.",
+      "zh": "未找到日志。"
+    },
+    "An import allows up to 5,000 records.": {
+      "en": "An import allows up to 5,000 records.",
+      "ru": "За один импорт допускается до 5000 записей.",
+      "zh": "每次导入最多支持 5,000 条记录。"
+    },
+    "Uploaded locally": {
+      "en": "Uploaded locally",
+      "ru": "Загружен вручную",
+      "zh": "本地上传"
+    },
+    "Existing library": {
+      "en": "Existing library",
+      "ru": "Существующая библиотека",
+      "zh": "现有字典库"
+    },
+    "Job not found.": {
+      "en": "Job not found.",
+      "ru": "Задача не найдена.",
+      "zh": "未找到任务。"
+    },
+    "Record not found.": {
+      "en": "Record not found.",
+      "ru": "Запись не найдена.",
+      "zh": "未找到记录。"
+    },
+    "Use owner/repo or https://github.com/owner/repo.": {
+      "en": "Use owner/repo or https://github.com/owner/repo.",
+      "ru": "Используйте owner/repo или https://github.com/owner/repo.",
+      "zh": "请使用 owner/repo 或 https://github.com/owner/repo。"
+    },
+    "Source": {
+      "en": "Source",
+      "ru": "Источник",
+      "zh": "来源"
+    },
+    "GitHub dictionary limit is 50 MB.": {
+      "en": "GitHub dictionary limit is 50 MB.",
+      "ru": "Лимит GitHub-словаря — 50 МБ.",
+      "zh": "GitHub 字典文件大小上限为 50 MB。"
+    },
+    "Recovered UTC": {
+      "en": "Recovered UTC",
+      "ru": "Найден UTC",
+      "zh": "恢复时间（UTC）"
+    },
+    "Not recovered": {
+      "en": "Not recovered",
+      "ru": "Не найден",
+      "zh": "未恢复"
+    },
+    "Could not extract a WPA handshake. Check the original capture.": {
+      "en": "Could not extract a WPA handshake. Check the original capture.",
+      "ru": "Не удалось извлечь WPA-handshake. Проверьте исходный захват.",
+      "zh": "无法提取 WPA 握手，请检查原始抓包文件。"
+    },
+    "Could not download the GitHub file.": {
+      "en": "Could not download the GitHub file.",
+      "ru": "Не удалось скачать файл из GitHub.",
+      "zh": "无法下载 GitHub 文件。"
+    },
+    "Invalid username or password.": {
+      "en": "Invalid username or password.",
+      "ru": "Неверный логин или пароль.",
+      "zh": "用户名或密码错误。"
+    },
+    "Invalid request origin.": {
+      "en": "Invalid request origin.",
+      "ru": "Недопустимый источник запроса.",
+      "zh": "请求来源无效。"
+    },
+    "Invalid PMKID record.": {
+      "en": "Invalid PMKID record.",
+      "ru": "Некорректная PMKID-запись.",
+      "zh": "PMKID 记录无效。"
+    },
+    "Invalid WPA record: incorrect hash or MAC length.": {
+      "en": "Invalid WPA record: incorrect hash or MAC length.",
+      "ru": "Некорректная WPA-запись: неверная длина хеша или MAC.",
+      "zh": "WPA 记录无效：哈希或 MAC 长度不正确。"
+    },
+    "Invalid dictionary queue.": {
+      "en": "Invalid dictionary queue.",
+      "ru": "Некорректная очередь словарей.",
+      "zh": "字典队列无效。"
+    },
+    "Invalid EAPOL message pair.": {
+      "en": "Invalid EAPOL message pair.",
+      "ru": "Некорректная пара сообщений EAPOL.",
+      "zh": "EAPOL 消息对无效。"
+    },
+    "Invalid time limit or workload.": {
+      "en": "Invalid time limit or workload.",
+      "ru": "Некорректное ограничение времени или нагрузка.",
+      "zh": "时限或负载设置无效。"
+    },
+    "Invalid handshake ANonce.": {
+      "en": "Invalid handshake ANonce.",
+      "ru": "Некорректный ANonce в handshake.",
+      "zh": "握手 ANonce 无效。"
+    },
+    "Invalid handshake EAPOL.": {
+      "en": "Invalid handshake EAPOL.",
+      "ru": "Некорректный EAPOL в handshake.",
+      "zh": "握手 EAPOL 无效。"
+    },
+    "Invalid JSON request.": {
+      "en": "Invalid JSON request.",
+      "ru": "Некорректный JSON-запрос.",
+      "zh": "JSON 请求无效。"
+    },
+    "Invalid SSID in WPA record.": {
+      "en": "Invalid SSID in WPA record.",
+      "ru": "Некорректный SSID в WPA-записи.",
+      "zh": "WPA 记录中的 SSID 无效。"
+    },
+    "Invalid dictionary path.": {
+      "en": "Invalid dictionary path.",
+      "ru": "Некорректный путь словаря.",
+      "zh": "字典路径无效。"
+    },
+    "The new password must contain 14 to 200 characters.": {
+      "en": "The new password must contain 14 to 200 characters.",
+      "ru": "Новый пароль должен содержать от 14 до 200 символов.",
+      "zh": "新密码必须包含 14 至 200 个字符。"
+    },
+    "CLEAR": {
+      "en": "CLEAR",
+      "ru": "ОЧИСТИТЬ",
+      "zh": "CLEAR"
+    },
+    "Refresh the GitHub catalog.": {
+      "en": "Refresh the GitHub catalog.",
+      "ru": "Обновите каталог GitHub.",
+      "zh": "请刷新 GitHub 目录。"
+    },
+    "Refresh the sign-in page.": {
+      "en": "Refresh the sign-in page.",
+      "ru": "Обновите страницу входа.",
+      "zh": "请刷新登录页面。"
+    },
+    "Refresh the page and retry.": {
+      "en": "Refresh the page and retry.",
+      "ru": "Обновите страницу и повторите действие.",
+      "zh": "请刷新页面并重试。"
+    },
+    "A dictionary file is unavailable.": {
+      "en": "A dictionary file is unavailable.",
+      "ru": "Один из файлов словарей недоступен.",
+      "zh": "某个字典文件不可用。"
+    },
+    "Expected a JSON object.": {
+      "en": "Expected a JSON object.",
+      "ru": "Ожидается JSON-объект.",
+      "zh": "需要 JSON 对象。"
+    },
+    "Expected a Hashcat 22000 WPA file. Other hash types are unsupported.": {
+      "en": "Expected a Hashcat 22000 WPA file. Other hash types are unsupported.",
+      "ru": "Ожидается файл WPA в формате Hashcat 22000. Другие типы хешей не поддерживаются.",
+      "zh": "需要 Hashcat 22000 格式的 WPA 文件。不支持其他哈希类型。"
+    },
+    "The operation timed out.": {
+      "en": "The operation timed out.",
+      "ru": "Операция превысила допустимое время.",
+      "zh": "操作超时。"
+    },
+    "Hashcat failed. Open the pass log.": {
+      "en": "Hashcat failed. Open the pass log.",
+      "ru": "Ошибка Hashcat. Откройте журнал прохода.",
+      "zh": "Hashcat 运行失败，请查看运行日志。"
+    },
+    "Worker error: {error}. Check file availability and service logs.": {
+      "en": "Worker error: {error}. Check file availability and service logs.",
+      "ru": "Ошибка worker: {error}. Проверьте доступность файлов и журнал службы.",
+      "zh": "工作进程错误：{error}。请检查文件可用性和服务日志。"
+    },
+    "GitHub connection failed. Try again later.": {
+      "en": "GitHub connection failed. Try again later.",
+      "ru": "Ошибка соединения с GitHub. Повторите позже.",
+      "zh": "GitHub 连接失败，请稍后重试。"
+    },
+    "Password not recovered yet.": {
+      "en": "Password not recovered yet.",
+      "ru": "Пароль ещё не найден.",
+      "zh": "密码尚未恢复。"
+    },
+    "Supported files: PCAP, PCAPNG, CAP, 22000, HC22000 and TXT.": {
+      "en": "Supported files: PCAP, PCAPNG, CAP, 22000, HC22000 and TXT.",
+      "ru": "Поддерживаются PCAP, PCAPNG, CAP, 22000, HC22000 и TXT.",
+      "zh": "支持的文件格式：PCAP、PCAPNG、CAP、22000、HC22000 和 TXT。"
+    },
+    "Public GitHub repository or file not found.": {
+      "en": "Public GitHub repository or file not found.",
+      "ru": "Публичный репозиторий или файл GitHub не найден.",
+      "zh": "未找到公开 GitHub 仓库或文件。"
+    },
+    "Request too large.": {
+      "en": "Request too large.",
+      "ru": "Слишком большой запрос.",
+      "zh": "请求过大。"
+    },
+    "Too many attempts. Try again in 15 minutes.": {
+      "en": "Too many attempts. Try again in 15 minutes.",
+      "ru": "Слишком много попыток. Повторите через 15 минут.",
+      "zh": "尝试次数过多，请在 15 分钟后重试。"
+    },
+    "The dictionary must be a text file without NUL bytes.": {
+      "en": "The dictionary must be a text file without NUL bytes.",
+      "ru": "Словарь должен быть текстовым файлом без нулевых байтов.",
+      "zh": "字典必须是不含 NUL 字节的文本文件。"
+    },
+    "Dictionary not found.": {
+      "en": "Dictionary not found.",
+      "ru": "Словарь не найден.",
+      "zh": "未找到字典。"
+    },
+    "The dictionary is empty.": {
+      "en": "The dictionary is empty.",
+      "ru": "Словарь пуст.",
+      "zh": "字典为空。"
+    },
+    "Finish or stop the saved job first.": {
+      "en": "Finish or stop the saved job first.",
+      "ru": "Сначала завершите или остановите сохранённую задачу.",
+      "zh": "请先完成或停止已保存的任务。"
+    },
+    "The text file must use UTF-8.": {
+      "en": "The text file must use UTF-8.",
+      "ru": "Текстовый файл должен быть в UTF-8.",
+      "zh": "文本文件必须使用 UTF-8 编码。"
+    },
+    "The current password is incorrect.": {
+      "en": "The current password is incorrect.",
+      "ru": "Текущий пароль неверен.",
+      "zh": "当前密码错误。"
+    },
+    "Sign-in required.": {
+      "en": "Sign-in required.",
+      "ru": "Требуется вход.",
+      "zh": "需要登录。"
+    },
+    "Enter a public GitHub repository.": {
+      "en": "Enter a public GitHub repository.",
+      "ru": "Укажите публичный репозиторий GitHub.",
+      "zh": "请输入公开 GitHub 仓库。"
+    },
+    "The file exceeds the size limit.": {
+      "en": "The file exceeds the size limit.",
+      "ru": "Файл превышает допустимый размер.",
+      "zh": "文件超出大小限制。"
+    },
+    "The file is empty.": {
+      "en": "The file is empty.",
+      "ru": "Файл пуст.",
+      "zh": "文件为空。"
+    },
+    "NETWORK SECURITY / OVERVIEW": {
+      "en": "NETWORK SECURITY / OVERVIEW",
+      "ru": "БЕЗОПАСНОСТЬ СЕТЕЙ / ОБЗОР",
+      "zh": "网络安全 / 概览"
+    },
+    "NETWORK SECURITY / CAPTURES": {
+      "en": "NETWORK SECURITY / CAPTURES",
+      "ru": "БЕЗОПАСНОСТЬ СЕТЕЙ / ЗАХВАТЫ",
+      "zh": "网络安全 / 抓包"
+    },
+    "NETWORK SECURITY / WORDLISTS": {
+      "en": "NETWORK SECURITY / WORDLISTS",
+      "ru": "БЕЗОПАСНОСТЬ СЕТЕЙ / СЛОВАРИ",
+      "zh": "网络安全 / 字典"
+    },
+    "NETWORK SECURITY / HISTORY": {
+      "en": "NETWORK SECURITY / HISTORY",
+      "ru": "БЕЗОПАСНОСТЬ СЕТЕЙ / ИСТОРИЯ",
+      "zh": "网络安全 / 历史"
+    },
+    "NETWORK SECURITY / COMPUTE": {
+      "en": "NETWORK SECURITY / COMPUTE",
+      "ru": "БЕЗОПАСНОСТЬ СЕТЕЙ / ВЫЧИСЛЕНИЯ",
+      "zh": "网络安全 / 计算"
+    },
+    "ACCELERATOR": {
+      "en": "ACCELERATOR",
+      "ru": "УСКОРИТЕЛЬ",
+      "zh": "加速设备"
+    },
+    "ENGINE": {
+      "en": "ENGINE",
+      "ru": "ДВИЖОК",
+      "zh": "引擎"
+    },
+    "HOST": {
+      "en": "HOST",
+      "ru": "СЕРВЕР",
+      "zh": "主机"
+    },
+    "HASHCAT ENGINE": {
+      "en": "HASHCAT ENGINE",
+      "ru": "ДВИЖОК HASHCAT",
+      "zh": "HASHCAT 引擎"
+    },
+    "IMPORT / LOCAL FILE": {
+      "en": "IMPORT / LOCAL FILE",
+      "ru": "ИМПОРТ / ЛОКАЛЬНЫЙ ФАЙЛ",
+      "zh": "导入 / 本地文件"
+    },
+    "NEW JOB / SERVER GPU": {
+      "en": "NEW JOB / SERVER GPU",
+      "ru": "НОВАЯ ЗАДАЧА / GPU СЕРВЕРА",
+      "zh": "新任务 / 服务器 GPU"
+    },
+    "NETWORK / SESSION HISTORY": {
+      "en": "NETWORK / SESSION HISTORY",
+      "ru": "СЕТЬ / ИСТОРИЯ СЕССИИ",
+      "zh": "网络 / 会话历史"
+    },
+    "CONFIRM / WORKSPACE": {
+      "en": "CONFIRM / WORKSPACE",
+      "ru": "ПОДТВЕРЖДЕНИЕ / РАБОЧАЯ ОБЛАСТЬ",
+      "zh": "确认 / 工作区"
+    },
+    "DICTIONARIES / GITHUB": {
+      "en": "DICTIONARIES / GITHUB",
+      "ru": "СЛОВАРИ / GITHUB",
+      "zh": "字典 / GITHUB"
+    },
+    "HASHCAT / ENGINE OUTPUT": {
+      "en": "HASHCAT / ENGINE OUTPUT",
+      "ru": "HASHCAT / ВЫВОД ДВИЖКА",
+      "zh": "HASHCAT / 引擎输出"
+    },
+    "JOB / SAVED SNAPSHOT": {
+      "en": "JOB / SAVED SNAPSHOT",
+      "ru": "ЗАДАЧА / СОХРАНЁННЫЙ СНИМОК",
+      "zh": "任务 / 保存的快照"
+    },
+    "ACCOUNT / PRIVATE ACCESS": {
+      "en": "ACCOUNT / PRIVATE ACCESS",
+      "ru": "АККАУНТ / ЛИЧНЫЙ ДОСТУП",
+      "zh": "账户 / 私有访问"
+    },
+    "Language": {
+      "en": "Language",
+      "ru": "Язык",
+      "zh": "语言"
+    }
+  },
+  "aliases": {
+    ". Дубликатов:": ". Duplicates:",
+    "0 Б": "0 B",
+    "0 — без ограничения. При достижении лимита задача переходит на паузу.": "0 means no limit. The job pauses when the limit is reached.",
+    "22000 · словарный": "22000 · dictionary",
+    "CPU потоки": "CPU threads",
+    "CSV содержит найденные пароли. Храните файл в безопасном месте.": "The CSV contains recovered passwords. Store it securely.",
+    "GPU недоступна": "GPU unavailable",
+    "Hashcat проверяет кандидатов последовательно на GTX 1070.": "Hashcat checks candidates sequentially on the GTX 1070.",
+    "WPA-записей ·": "WPA records ·",
+    "Wi-Fi сети": "Wi-Fi networks",
+    "Worker на связи": "Worker online",
+    "Worker недоступен": "Worker unavailable",
+    "iEasyHash · Личный кабинет": "iEasyHash · Console",
+    "«Не найден» означает, что проверенные словари не дали совпадения. Это не доказывает стойкость пароля при других способах проверки.": "No match means the tested dictionaries contained no matching candidate. It does not prove resistance to other checks.",
+    "· Нагрузка": "· Workload",
+    "· Показана часть каталога": "· Partial catalog shown",
+    "· проход": "· pass",
+    "Б": "B",
+    "Без ограничения времени": "No time limit",
+    "Без совпадений": "No match",
+    "Библиотека словарей": "Dictionary library",
+    "В очереди": "Queued",
+    "ВРЕМЯ": "TIME",
+    "ВЫЧИСЛЕНИЯ": "COMPUTE",
+    "Ваш захват": "Your capture",
+    "Ваш логин": "Your username",
+    "Ваш пароль": "Your password",
+    "Ваш результат": "Your results",
+    "Ваши захваты, результаты и история каждого пароля.": "Your captures, results and recovery history.",
+    "Ваши словари": "Your dictionaries",
+    "Введите ОЧИСТИТЬ": "Type CLEAR",
+    "Владелец": "Owner",
+    "Войдите, чтобы продолжить проверку сетей.": "Sign in to continue auditing your networks.",
+    "Войти в кабинет": "Sign in",
+    "Время в истории — длительность общего прохода, а не точное время нахождения этого пароля.": "History shows the duration of the entire pass, not the exact time a password was recovered.",
+    "Время задачи": "Job duration",
+    "Все сети ↗": "All networks ↗",
+    "Вт": "W",
+    "Вход · iEasyHash": "Sign in · iEasyHash",
+    "Входим…": "Signing in…",
+    "Выберите словари в библиотеке.": "Select dictionaries from the library.",
+    "Выберите словари и порядок проходов": "Choose dictionaries and pass order",
+    "Выделите пароль и скопируйте вручную.": "Select the password and copy it manually.",
+    "Выйти": "Sign out",
+    "Выполняется": "Running",
+    "Высокая · максимум ресурсов GPU": "High · maximum GPU resources",
+    "Вычисления": "Computation",
+    "Вычисления в офисе.": "Server compute.",
+    "Выше": "Move up",
+    "ГБ": "GB",
+    "Готовы к проверке?": "Ready to audit?",
+    "Готовый файл загружается в закрытую рабочую область.": "Import an existing file into your private workspace.",
+    "ДЛИТЕЛЬНОСТЬ": "DURATION",
+    "ДОСТУП ВЛАДЕЛЬЦА": "OWNER ACCESS",
+    "Добавить": "Add",
+    "Добавить в очередь": "Add to queue",
+    "Добавлен": "Added",
+    "Добавлено записей:": "Records added:",
+    "Добавляем сеть": "Importing network",
+    "Добавляем словари": "Importing dictionaries",
+    "Добавьте захват своей сети, выберите словари": "Import your network capture, choose dictionaries",
+    "Добавьте захват своей сети, чтобы начать.": "Import your network capture to get started.",
+    "Доступ и пароль": "Access and password",
+    "Доступ к кабинету": "Account access",
+    "Драйвер": "Driver",
+    "Ещё не найден": "Not recovered yet",
+    "Журнал прохода": "Pass log",
+    "Журнал ↗": "Log ↗",
+    "ЗАДАЧА": "JOB",
+    "Завершено": "Completed",
+    "Завершённые задачи, найденные пароли и журналы движка.": "Completed jobs, recovered passwords and engine logs.",
+    "Загружаем": "Uploading",
+    "Загружаем журнал…": "Loading log…",
+    "Загружаем состояние сервера…": "Loading server status…",
+    "Загрузка": "Utilization",
+    "Загрузка заняла слишком много времени.": "The upload timed out.",
+    "Загрузка…": "Downloading…",
+    "Задача": "Job",
+    "Задачи": "Jobs",
+    "Задачи сохраняются на сервере": "Jobs saved on the server",
+    "Закрытое рабочее пространство": "Private workspace",
+    "Закрытое серверное хранилище": "Private server storage",
+    "Закрыть": "Close",
+    "Запустить на сервере ↗": "Run on server ↗",
+    "Запустить проверку": "Start audit",
+    "Захваты, словари и вычисления — на вашем сервере.": "Captures, dictionaries and computation stay on your server.",
+    "Захваты, хеши, результаты и история задач будут удалены. Словари и порядок очереди сохранятся.": "Captures, hashes, results and job history will be deleted. Dictionaries and queue order will be kept.",
+    "Здесь появятся запущенные проверки.": "Your audit jobs will appear here.",
+    "Знакомые сети.": "Your networks.",
+    "ИСТОРИЯ СЕТИ": "NETWORK HISTORY",
+    "ИСТОЧНИК": "SOURCE",
+    "История": "History",
+    "История и найденные пароли доступны только после входа.": "History and recovered passwords require sign-in.",
+    "История словарных проходов пока пуста.": "No dictionary passes yet.",
+    "КБ": "KB",
+    "Каждый проход на виду.": "Every pass, recorded.",
+    "Каждый словарь — отдельный проход": "One dictionary per pass",
+    "Как работает кабинет": "How the console works",
+    "Копировать": "Copy",
+    "Лимит": "Limit",
+    "Лимит каждого прохода, минут": "Time limit per pass, minutes",
+    "Личный кабинет для проверки своих Wi-Fi сетей.": "A private console for auditing your Wi-Fi networks.",
+    "Логин": "Username",
+    "МБ": "MB",
+    "Максимальный размер захвата — 64 МБ.": "Captures must be no larger than 64 MB.",
+    "Максимальный размер словаря — 2 ГБ.": "Dictionaries must be no larger than 2 GB.",
+    "Мои сети": "My networks",
+    "Мощность": "Power",
+    "НАЙДЕНО": "RECOVERED",
+    "НАЧАЛО": "STARTED",
+    "На паузе": "Paused",
+    "На связи": "Online",
+    "Нагрузка": "Load",
+    "Нагрузка GPU": "GPU workload",
+    "Нажмите на сеть для подробностей": "Select a network for details",
+    "Название задачи": "Job name",
+    "Найден": "Recovered",
+    "Найденные результаты и история сохранятся.": "Recovered results and history will be kept.",
+    "Найти файлы ↗": "Find files ↗",
+    "Не менее 14 символов. После смены все сессии будут завершены.": "At least 14 characters. Changing it signs out all sessions.",
+    "Не проверен": "Not tested",
+    "Не удалось войти": "Sign-in failed",
+    "Не удалось скачать результаты.": "Could not download results.",
+    "Недоступен": "Unavailable",
+    "Недоступна": "Not available",
+    "Ниже": "Move down",
+    "Низкая · сервер занят другими задачами": "Low · server is handling other work",
+    "Новая проверка": "New audit",
+    "Новые пароли не совпадают.": "The new passwords do not match.",
+    "Новый пароль": "New password",
+    "ОБЪЁМ": "SIZE",
+    "ОЧЕРЕДЬ": "QUEUE",
+    "Обзор": "Overview",
+    "Обычная · рекомендуется": "Normal · recommended",
+    "Одна GPU-задача одновременно": "One GPU job at a time",
+    "Ожидание": "Ready",
+    "Основная навигация": "Main navigation",
+    "Осталось": "Remaining",
+    "Остановить": "Stop",
+    "Остановить проверку?": "Stop this audit?",
+    "Остановка по температуре": "Temperature cutoff",
+    "Остановка…": "Stopping…",
+    "Остановлено": "Stopped",
+    "Открыть историю ↗": "View history ↗",
+    "Открыть сеть": "Open network",
+    "Отмена": "Cancel",
+    "Отменить": "Cancel job",
+    "Офисный сервер": "Server host",
+    "Очередь словарей": "Dictionary queue",
+    "Очистить": "Clear",
+    "Очистить область": "Clear workspace",
+    "Очистить рабочую область?": "Clear the workspace?",
+    "Ошибка": "Failed",
+    "Ошибка загрузки файла": "File upload failed",
+    "ПАРОЛЬ": "PASSWORD",
+    "ПОРЯДОК": "ORDER",
+    "ПОСЛЕДОВАТЕЛЬНОСТЬ ПРОВЕРКИ": "AUDIT SEQUENCE",
+    "ПРОХОДЫ": "PASSES",
+    "Память": "Memory",
+    "Пароли найдены": "Passwords recovered",
+    "Пароль": "Password",
+    "Пароль скопирован.": "Password copied.",
+    "Пауза…": "Pausing…",
+    "Повторите новый пароль": "Confirm new password",
+    "Под контролем.": "Under control.",
+    "Подготавливаем загрузку…": "Preparing upload…",
+    "Подключение…": "Connecting…",
+    "Подробнее ↗": "Details ↗",
+    "Подтвердить": "Confirm",
+    "Подходящих файлов нет.": "No matching files.",
+    "Поиск сети": "Search networks",
+    "Поиск сети или файла…": "Search network or file…",
+    "Поиск словаря": "Search dictionaries",
+    "Поиск словаря…": "Search dictionaries…",
+    "Показать": "Show",
+    "Показать пароль": "Show password",
+    "Последние 100 задач": "Latest 100 jobs",
+    "Последние 100 проходов": "Latest 100 passes",
+    "Прервано": "Interrupted",
+    "При продолжении используется checkpoint. Если он ещё не записан, текущий словарь будет проверен заново.": "Resume uses a checkpoint. If none was written, the current dictionary starts again.",
+    "Принимаются готовые захваты PCAP, PCAPNG, CAP и WPA-хеши 22000. Приложение не собирает трафик и не подключается к сетям.": "Accepts existing PCAP, PCAPNG, CAP captures and WPA 22000 hashes. The app does not capture traffic or connect to networks.",
+    "Проверка Wi-Fi": "Wi-Fi audit",
+    "Проверка поставлена в очередь.": "Audit queued.",
+    "Проверки": "Audit jobs",
+    "Проверьте введённые данные.": "Check the entered values.",
+    "Проверяйте стойкость паролей своих Wi-Fi сетей.": "Audit the password strength of your own Wi-Fi networks.",
+    "Прогресс прохода": "Pass progress",
+    "Продолжить ↗": "Resume ↗",
+    "Пропустить словарь?": "Skip this dictionary?",
+    "Пропущено": "Skipped",
+    "Проходов ещё не было.": "No passes yet.",
+    "Публичные текстовые файлы до 50 МБ. Хеши и пароли на GitHub не отправляются.": "Public text files up to 50 MB. Hashes and passwords are never sent to GitHub.",
+    "Публичный репозиторий": "Public repository",
+    "РАБОЧАЯ ОБЛАСТЬ": "WORK AREA",
+    "РАБОЧЕЕ ПРОСТРАНСТВО": "WORKSPACE",
+    "РЕЗУЛЬТАТ": "RESULT",
+    "Рабочее пространство": "Workspace",
+    "Рабочие файлы": "Working files",
+    "Режим": "Mode",
+    "Результат": "Result",
+    "С возвращением.": "Welcome back.",
+    "СЕТИ": "NETWORKS",
+    "СЕТЬ / SSID": "NETWORK / SSID",
+    "СЛОВАРИ": "DICTIONARIES",
+    "СЛОВАРЬ": "DICTIONARY",
+    "СЛОВАРЬ / ИСТОЧНИК": "DICTIONARY / SOURCE",
+    "СНИМОК ОЧЕРЕДИ": "QUEUE SNAPSHOT",
+    "СОСТОЯНИЕ": "STATUS",
+    "СТРОКИ": "LINES",
+    "Свободно на диске": "Free disk space",
+    "Сервер": "Server",
+    "Сервер не принял файл. Возможно, превышен лимит загрузки туннеля.": "The server rejected the file. The proxy upload limit may have been exceeded.",
+    "Сервер недоступен. Повторите позже.": "Server unavailable. Try again later.",
+    "Сессия завершилась": "Session expired",
+    "Сети для проверки": "Networks to audit",
+    "Сети и захваты": "Networks and captures",
+    "Система": "System",
+    "Скорость": "Speed",
+    "Скрыть": "Hide",
+    "Скрыть пароль": "Hide password",
+    "Следующий словарь →": "Next dictionary →",
+    "Слова имеют вес.": "Words matter.",
+    "Словари": "Dictionaries",
+    "Словари в очереди": "Queued dictionaries",
+    "Словари из GitHub": "GitHub dictionaries",
+    "Словари не найдены. Загрузите файл или откройте GitHub.": "No dictionaries found. Upload a file or open GitHub.",
+    "Словари хранятся на офисном сервере. Очередь сохраняется между сессиями. Размер и число строк не равны числу допустимых WPA-паролей.": "Dictionaries are stored on the server and the queue persists between sessions. File size and line count are not the number of valid WPA candidates.",
+    "Словарные проходы": "Dictionary passes",
+    "Словарь": "Dictionary",
+    "Словарь доступен в библиотеке.": "Dictionary available in the library.",
+    "Сменить пароль": "Change password",
+    "Соберите библиотеку и задайте порядок проверки.": "Build your library and arrange the audit order.",
+    "Соединение прервано. Повторите загрузку.": "Connection interrupted. Retry the upload.",
+    "Создана": "Created",
+    "Состояние": "Status",
+    "Состояние GTX 1070, worker и инструментов проверки.": "GTX 1070, worker and audit tool status.",
+    "ТБ": "TB",
+    "ТЕЛЕМЕТРИЯ / LIVE": "TELEMETRY / LIVE",
+    "Текущая проверка": "Current audit",
+    "Текущий пароль": "Current password",
+    "Текущий проход завершится, очередь продолжится со следующего словаря.": "The current pass will end and the queue will continue with the next dictionary.",
+    "Температура": "Temperature",
+    "Температура GPU за последние минуты": "GPU temperature over recent minutes",
+    "Только ваши сети. Только ваш сервер.": "Your networks. Your server.",
+    "Убрать из очереди": "Remove from queue",
+    "Удалена": "Deleted",
+    "Удалить словарь": "Delete dictionary",
+    "Удалить словарь?": "Delete this dictionary?",
+    "Уже есть": "Already present",
+    "Узнайте, насколько": "Find out how strong",
+    "Управлять словарями ↗": "Manage dictionaries ↗",
+    "Ускоритель": "Accelerator",
+    "Файл получен. Обрабатываем…": "File received. Processing…",
+    "Читаем каталог репозитория…": "Reading repository catalog…",
+    "Экспортировать результаты?": "Export results?",
+    "Этот словарь уже есть в библиотеке.": "This dictionary is already in the library.",
+    "будет удалён из библиотеки и очереди.": "will be removed from the library and queue.",
+    "в библиотеке": "in the library",
+    "добавлен.": "added.",
+    "записей WPA": "WPA records",
+    "записей ещё не восстановлено": "records still unrecovered",
+    "и запустите очередь на офисном сервере.": "and run the queue on your server.",
+    "мин": "min",
+    "на проход": "per pass",
+    "найдено": "recovered",
+    "с": "s",
+    "словарей · режим WPA 22000 · только словарная проверка.": "dictionaries · WPA 22000 · dictionary checks only.",
+    "стойкий ваш пароль.": "your password is.",
+    "строк ·": "lines ·",
+    "температура GPU": "GPU temperature",
+    "ч": "h",
+    "Ⅱ Пауза": "Ⅱ Pause",
+    "↓ Экспорт CSV": "↓ Export CSV",
+    "■ Остановить": "■ Stop",
+    "◈ Каталог GitHub": "◈ GitHub catalog",
+    "◈ Частный доступ": "◈ Private access",
+    "＋ Добавить сеть": "＋ Add network",
+    "＋ Словарь": "＋ Dictionary",
+    "GitHub ограничил запросы. Повторите позже.": "GitHub rate limit reached. Try again later.",
+    "Hashcat не смог прочитать сохранённые результаты.": "Hashcat could not read saved results.",
+    "Worker был перезапущен. Продолжите задачу; сохранённый checkpoint будет использован, если доступен.": "The worker restarted. Resume the job to use its saved checkpoint, if available.",
+    "Worker недоступен. Проверьте раздел «Сервер».": "Worker unavailable. Check the Server page.",
+    "[Результат скрыт; доступен в карточке сети]": "[Result hidden; available in network details]",
+    "В рабочей области допускается до 5000 записей.": "The workspace allows up to 5,000 records.",
+    "В файле нет пригодных записей WPA.": "The file contains no usable WPA records.",
+    "Внешний сервис недоступен. Повторите позже.": "External service unavailable. Try again later.",
+    "Выберите сети, для которых пароль ещё не найден.": "Select networks with unrecovered passwords.",
+    "Действие недоступно в текущем состоянии задачи.": "This action is unavailable in the current job state.",
+    "Для подтверждения введите ОЧИСТИТЬ.": "Type CLEAR to confirm.",
+    "Добавьте хотя бы один словарь в очередь.": "Add at least one dictionary to the queue.",
+    "Другая задача уже выполняется.": "Another job is already running.",
+    "Журнал не найден.": "Log not found.",
+    "За один импорт допускается до 5000 записей.": "An import allows up to 5,000 records.",
+    "Загружен вручную": "Uploaded locally",
+    "Существующая библиотека": "Existing library",
+    "Задача не найдена.": "Job not found.",
+    "Запись не найдена.": "Record not found.",
+    "Используйте owner/repo или https://github.com/owner/repo.": "Use owner/repo or https://github.com/owner/repo.",
+    "Источник": "Source",
+    "Лимит GitHub-словаря — 50 МБ.": "GitHub dictionary limit is 50 MB.",
+    "Найден UTC": "Recovered UTC",
+    "Не найден": "Not recovered",
+    "Не удалось извлечь WPA-handshake. Проверьте исходный захват.": "Could not extract a WPA handshake. Check the original capture.",
+    "Не удалось скачать файл из GitHub.": "Could not download the GitHub file.",
+    "Неверный логин или пароль.": "Invalid username or password.",
+    "Недопустимый источник запроса.": "Invalid request origin.",
+    "Некорректная PMKID-запись.": "Invalid PMKID record.",
+    "Некорректная WPA-запись: неверная длина хеша или MAC.": "Invalid WPA record: incorrect hash or MAC length.",
+    "Некорректная очередь словарей.": "Invalid dictionary queue.",
+    "Некорректная пара сообщений EAPOL.": "Invalid EAPOL message pair.",
+    "Некорректное ограничение времени или нагрузка.": "Invalid time limit or workload.",
+    "Некорректный ANonce в handshake.": "Invalid handshake ANonce.",
+    "Некорректный EAPOL в handshake.": "Invalid handshake EAPOL.",
+    "Некорректный JSON-запрос.": "Invalid JSON request.",
+    "Некорректный SSID в WPA-записи.": "Invalid SSID in WPA record.",
+    "Некорректный путь словаря.": "Invalid dictionary path.",
+    "Новый пароль должен содержать от 14 до 200 символов.": "The new password must contain 14 to 200 characters.",
+    "ОЧИСТИТЬ": "CLEAR",
+    "Обновите каталог GitHub.": "Refresh the GitHub catalog.",
+    "Обновите страницу входа.": "Refresh the sign-in page.",
+    "Обновите страницу и повторите действие.": "Refresh the page and retry.",
+    "Один из файлов словарей недоступен.": "A dictionary file is unavailable.",
+    "Ожидается JSON-объект.": "Expected a JSON object.",
+    "Ожидается файл WPA в формате Hashcat 22000. Другие типы хешей не поддерживаются.": "Expected a Hashcat 22000 WPA file. Other hash types are unsupported.",
+    "Операция превысила допустимое время.": "The operation timed out.",
+    "Ошибка Hashcat. Откройте журнал прохода.": "Hashcat failed. Open the pass log.",
+    "Ошибка worker: {error}. Проверьте доступность файлов и журнал службы.": "Worker error: {error}. Check file availability and service logs.",
+    "Ошибка соединения с GitHub. Повторите позже.": "GitHub connection failed. Try again later.",
+    "Пароль ещё не найден.": "Password not recovered yet.",
+    "Поддерживаются PCAP, PCAPNG, CAP, 22000, HC22000 и TXT.": "Supported files: PCAP, PCAPNG, CAP, 22000, HC22000 and TXT.",
+    "Публичный репозиторий или файл GitHub не найден.": "Public GitHub repository or file not found.",
+    "Слишком большой запрос.": "Request too large.",
+    "Слишком много попыток. Повторите через 15 минут.": "Too many attempts. Try again in 15 minutes.",
+    "Словарь должен быть текстовым файлом без нулевых байтов.": "The dictionary must be a text file without NUL bytes.",
+    "Словарь не найден.": "Dictionary not found.",
+    "Словарь пуст.": "The dictionary is empty.",
+    "Сначала завершите или остановите сохранённую задачу.": "Finish or stop the saved job first.",
+    "Текстовый файл должен быть в UTF-8.": "The text file must use UTF-8.",
+    "Текущий пароль неверен.": "The current password is incorrect.",
+    "Требуется вход.": "Sign-in required.",
+    "Укажите публичный репозиторий GitHub.": "Enter a public GitHub repository.",
+    "Файл превышает допустимый размер.": "The file exceeds the size limit.",
+    "Файл пуст.": "The file is empty.",
+    "NETWORK SECURITY / OVERVIEW": "NETWORK SECURITY / OVERVIEW",
+    "NETWORK SECURITY / CAPTURES": "NETWORK SECURITY / CAPTURES",
+    "NETWORK SECURITY / WORDLISTS": "NETWORK SECURITY / WORDLISTS",
+    "NETWORK SECURITY / HISTORY": "NETWORK SECURITY / HISTORY",
+    "NETWORK SECURITY / COMPUTE": "NETWORK SECURITY / COMPUTE",
+    "WORKSPACE": "WORKSPACE",
+    "ACCELERATOR": "ACCELERATOR",
+    "ENGINE": "ENGINE",
+    "HOST": "HOST",
+    "HASHCAT ENGINE": "HASHCAT ENGINE",
+    "IMPORT / LOCAL FILE": "IMPORT / LOCAL FILE",
+    "NEW JOB / OFFICE GPU": "NEW JOB / SERVER GPU",
+    "NETWORK / SESSION HISTORY": "NETWORK / SESSION HISTORY",
+    "CONFIRM / WORKSPACE": "CONFIRM / WORKSPACE",
+    "WORDLISTS / GITHUB": "DICTIONARIES / GITHUB",
+    "HASHCAT / ENGINE OUTPUT": "HASHCAT / ENGINE OUTPUT",
+    "JOB / SAVED SNAPSHOT": "JOB / SAVED SNAPSHOT",
+    "ACCOUNT / PRIVATE ACCESS": "ACCOUNT / PRIVATE ACCESS",
+    "Language": "Language"
+  }
+}
