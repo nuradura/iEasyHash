@@ -202,8 +202,53 @@ function renderWordlists() {
   const selected = state.wordlists.filter(w => w.position);
   $('#wordlists-table').innerHTML = words.length ? table([t("QUEUE"), t("DICTIONARY / SOURCE"), t("SIZE"), t("LINES"), t("ORDER")], words.map(w => `<tr><td><button class="wordlist-select ${w.position ? 'selected' : ''}" data-toggle-word="${w.id}" ${locked() ? 'disabled' : ''} aria-label="${w.position ? t("Remove from queue") : t("Add to queue")} ${esc(w.name)}">${w.position ? String(w.position).padStart(2, '0') : '＋'}</button></td><td><div class="wordlist-name">${esc(w.name)}</div><span class="cell-sub">${esc(t(w.source))}</span></td><td class="mono muted">${bytes(w.bytes)}</td><td class="mono muted">${number(w.lines)}</td><td><div class="row-buttons"><button class="icon-button" data-move-word="${w.id}" data-direction="-1" title="${esc(t("Move up"))}" ${locked() || !w.position || w.position === 1 ? 'disabled' : ''}>↑</button><button class="icon-button" data-move-word="${w.id}" data-direction="1" title="${esc(t("Move down"))}" ${locked() || !w.position || w.position === selected.length ? 'disabled' : ''}>↓</button><button class="icon-button danger-text" data-delete-word="${w.id}" title="${esc(t("Delete dictionary"))}" ${locked() ? 'disabled' : ''}>×</button></div></td></tr>`).join('')) : empty(t("No dictionaries found. Upload a file or open GitHub."), '▤');
 }
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const runMotion = {key: '', value: 0, from: 0, target: 0, started: 0, frame: 0};
+const percentFormat = new Intl.NumberFormat(locale, {minimumFractionDigits: 1, maximumFractionDigits: 1});
+function paintRunProgress() {
+  const value = runMotion.value;
+  const label = $('#current-run .run-percent-value');
+  const bar = $('#current-run .run-progress');
+  if (label) label.textContent = percentFormat.format(value);
+  if (bar) {
+    bar.style.setProperty('--run-progress', `${value}%`);
+    // Accessibility reports the actual measured value, independently of easing.
+    bar.setAttribute('aria-valuenow', runMotion.target.toFixed(1));
+  }
+}
+function animateRunProgress(now) {
+  runMotion.frame = 0;
+  if (document.hidden) return;
+  const elapsed = Math.min(1, (now - runMotion.started) / 900);
+  const eased = 1 - (1 - elapsed) ** 3;
+  runMotion.value = runMotion.from + (runMotion.target - runMotion.from) * eased;
+  paintRunProgress();
+  if (elapsed < 1) runMotion.frame = requestAnimationFrame(animateRunProgress);
+}
+function setRunProgress(job, percent) {
+  const key = `${job.id}:${job.progress?.pass_index || job.next_index + 1}`;
+  if (key !== runMotion.key || reducedMotion.matches || job.status !== 'running') {
+    cancelAnimationFrame(runMotion.frame);
+    Object.assign(runMotion, {key, value: percent, target: percent, frame: 0});
+  } else if (percent !== runMotion.target) {
+    runMotion.from = runMotion.value;
+    runMotion.target = percent;
+    runMotion.started = performance.now();
+    if (!runMotion.frame) runMotion.frame = requestAnimationFrame(animateRunProgress);
+  }
+  paintRunProgress();
+}
+reducedMotion.addEventListener('change', () => {
+  if (reducedMotion.matches) {
+    cancelAnimationFrame(runMotion.frame);
+    runMotion.frame = 0;
+    runMotion.value = runMotion.target;
+    paintRunProgress();
+  }
+});
 function renderRun() {
   const job = activeJob() || state.jobs[0];
+  $('.run-panel').classList.toggle('is-running', Boolean(job?.status === 'running' && state.worker_online && !document.hidden));
   if (!job) {
     $('#run-status').className = 'badge neutral';
     $('#run-status').textContent = t("Ready");
@@ -213,12 +258,14 @@ function renderRun() {
   $('#run-status').className = `badge ${job.status}`;
   $('#run-status').textContent = names[job.status] || job.status;
   const p = job.progress || {};
-  const percent = Number(p.percent || 0);
+  const rawPercent = Number(p.percent || 0);
+  const percent = Number.isFinite(rawPercent) ? Math.min(100, Math.max(0, rawPercent)) : 0;
   const ended = ['completed', 'stopped', 'failed'].includes(job.status);
   const eta = typeof p.eta === 'number' ? duration(p.eta - Date.now() / 1000) : '—';
   let controls = '';
   if (job.status === 'running') controls = `<button class="button secondary" data-job-action="pause" data-job="${job.id}">${esc(t("\u2161 Pause"))}</button><button class="button secondary" data-job-action="skip" data-job="${job.id}">${esc(t("Next dictionary \u2192"))}</button><button class="button secondary danger-text" data-job-action="stop" data-job="${job.id}">${esc(t("\u25A0 Stop"))}</button>`;else if (['paused', 'interrupted'].includes(job.status)) controls = `<button class="button primary" data-job-action="resume" data-job="${job.id}">${esc(t("Resume \u2197"))}</button><button class="button secondary danger-text" data-job-action="stop" data-job="${job.id}">${esc(t("Stop"))}</button>`;else if (job.status === 'queued') controls = `<button class="button secondary danger-text" data-job-action="stop" data-job="${job.id}">${esc(t("Cancel job"))}</button>`;else if (ended) controls = `<button class="text-button" data-go="history">${esc(t("View history \u2197"))}</button>`;
-  $('#current-run').innerHTML = `<div class="run-content"><div class="run-title-row"><div class="run-wordlist" title="${esc(p.wordlist || job.name)}">${esc(p.wordlist || job.name)}</div><div class="run-percent">${percent.toFixed(1)}<small>%</small></div></div><progress value="${percent}" max="100" aria-label="${esc(t("Pass progress"))}"></progress><div class="run-stats"><div><span>${ended ? t("Result") : t("Speed")}</span><strong>${ended ? `${state.hashes.filter(h => h.recovered && job.hash_ids.includes(h.id)).length} / ${job.hash_ids.length} ${t("recovered")}` : speed(p.speed || 0)}</strong></div><div><span>${ended ? t("Job duration") : t("Remaining")}</span><strong>${ended ? duration((job.finished || Date.now() / 1000) - (job.started || job.created)) : eta}</strong></div><div><span>${esc(t("Dictionary"))}</span><strong>${ended ? Math.min(job.next_index + 1, job.wordlists.length) : p.pass_index || 1} / ${job.wordlists.length}</strong></div></div>${controls ? `<div class="run-actions">${controls}</div>` : ''}${job.error ? `<div class="job-error">${esc(t(job.error))}</div>` : ''}${job.status === 'paused' ? `<div class="field-hint">${esc(t("Resume uses a checkpoint. If none was written, the current dictionary starts again."))}</div>` : ''}</div>`;
+  $('#current-run').innerHTML = `<div class="run-content"><div class="run-title-row"><div class="run-wordlist" title="${esc(p.wordlist || job.name)}">${esc(p.wordlist || job.name)}</div><div class="run-percent"><span class="run-percent-value"></span><small>%</small></div></div><div class="run-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(t("Pass progress"))}"><span class="run-progress-fill"></span></div><div class="run-stats"><div><span>${ended ? t("Result") : t("Speed")}</span><strong>${ended ? `${state.hashes.filter(h => h.recovered && job.hash_ids.includes(h.id)).length} / ${job.hash_ids.length} ${t("recovered")}` : speed(p.speed || 0)}</strong></div><div><span>${ended ? t("Job duration") : t("Remaining")}</span><strong>${ended ? duration((job.finished || Date.now() / 1000) - (job.started || job.created)) : eta}</strong></div><div><span>${esc(t("Dictionary"))}</span><strong>${ended ? Math.min(job.next_index + 1, job.wordlists.length) : p.pass_index || 1} / ${job.wordlists.length}</strong></div></div>${controls ? `<div class="run-actions">${controls}</div>` : ''}${job.error ? `<div class="job-error">${esc(t(job.error))}</div>` : ''}${job.status === 'paused' ? `<div class="field-hint">${esc(t("Resume uses a checkpoint. If none was written, the current dictionary starts again."))}</div>` : ''}</div>`;
+  setRunProgress(job, percent);
 }
 function renderHistory() {
   $('#jobs-table').innerHTML = state.jobs.length ? table([t("JOB"), t("STARTED"), t("DICTIONARIES"), t("STATUS"), ''], state.jobs.map(j => `<tr><td><span class="job-name">${esc(j.name)}</span><span class="cell-sub">${j.hash_ids.length} ${esc(t("WPA records \xB7"))} ${duration((j.finished || Date.now() / 1000) - (j.started || j.created))}</span></td><td>${date(j.created)}</td><td class="mono muted">${j.wordlists.length}</td><td>${badge(j.status)}</td><td><button class="text-button" data-job-detail="${j.id}">${esc(t("Details \u2197"))}</button></td></tr>`).join('')) : empty(t("Your audit jobs will appear here."), '◷');
@@ -539,8 +586,30 @@ $('#reset-workspace').addEventListener('click', () => confirmModal(t("Clear the 
   }
 }), true));
 navigate(location.hash.slice(1) || 'dashboard');
+let pollingProgress = false;
+async function refreshProgress() {
+  if (pollingProgress || document.hidden) return;
+  pollingProgress = true;
+  try {
+    const result = await api('/api/progress');
+    state.worker_online = result.worker_online;
+    if (result.job) {
+      const index = state.jobs.findIndex(job => job.id === result.job.id);
+      if (index >= 0) state.jobs[index] = result.job;
+      else state.jobs.unshift(result.job);
+    }
+    renderRun();
+  } catch {
+    $('.run-panel').classList.remove('is-running');
+  } finally {
+    pollingProgress = false;
+  }
+}
 refresh();
 refreshSystem();
+setInterval(() => {
+  if (['queued', 'running', 'pausing', 'stopping'].includes(activeJob()?.status)) refreshProgress();
+}, 500);
 setInterval(() => {
   if (!document.hidden) refresh();
 }, 2500);
@@ -548,6 +617,10 @@ setInterval(() => {
   if (!document.hidden) refreshSystem();
 }, 5000);
 document.addEventListener('visibilitychange', () => {
+  $('.run-panel').classList.remove('is-running');
+  cancelAnimationFrame(runMotion.frame);
+  runMotion.frame = 0;
+  runMotion.value = runMotion.target;
   if (!document.hidden) {
     refresh();
     refreshSystem();

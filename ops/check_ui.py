@@ -67,6 +67,7 @@ def main():
                 context = browser.new_context(viewport={"width":1440,"height":1050})
                 context.route("**/api/state", lambda r: r.fulfill(json=state))
                 context.route("**/api/system", lambda r: r.fulfill(json=system))
+                context.route("**/api/progress", lambda r: r.fulfill(json={"job": state['jobs'][0] if state['jobs'] else None, "worker_online": True}))
                 page = context.new_page()
                 page.on("pageerror", lambda e: errors.append(str(e)))
                 page.goto(URL + "/login", wait_until="networkidle")
@@ -136,6 +137,32 @@ def main():
                     page.locator('#password').fill(password)
                     page.locator('#login-form button[type="submit"]').click()
                     page.wait_for_url(URL + '/')
+                # Measured progress eases to each sample, never predicts beyond it.
+                page.locator('#language-select').select_option('en')
+                page.wait_for_load_state('networkidle')
+                state['jobs'] = [dict(id='synthetic-run', name='Demo audit', status='running',
+                    created=now, started=now, finished=None, next_index=0,
+                    hash_ids=['demo-1'], wordlists=words, error=None, runtime=0, workload=2,
+                    progress=dict(percent=20, speed=200000, pass_index=1, wordlist='common-passwords.txt'))]
+                page.reload(wait_until='networkidle')
+                expect(page.locator('.run-panel')).to_have_class('panel run-panel is-running')
+                expect(page.locator('.run-progress')).to_have_attribute('aria-valuenow', '20.0')
+                state['jobs'][0]['progress']['percent'] = 40
+                expect(page.locator('.run-progress')).to_have_attribute('aria-valuenow', '40.0')
+                value = float(page.locator('.run-percent-value').inner_text())
+                assert 20 <= value < 40, value
+                expect(page.locator('.run-percent-value')).to_have_text('40.0')
+                state['jobs'][0]['progress'].update(percent=5, pass_index=2, wordlist='passphrases.txt')
+                expect(page.locator('.run-percent-value')).to_have_text('5.0')
+                page.emulate_media(reduced_motion='reduce')
+                state['jobs'][0]['progress']['percent'] = 30
+                expect(page.locator('.run-percent-value')).to_have_text('30.0')
+                assert page.locator('.run-panel').evaluate("el => getComputedStyle(el, '::before').animationName") == 'none'
+                state['jobs'][0]['status'] = 'paused'
+                expect(page.locator('.run-panel')).not_to_have_class('panel run-panel is-running')
+                state['jobs'][0].update(status='completed', finished=time.time())
+                state['jobs'][0]['progress']['percent'] = 100
+                expect(page.locator('.run-percent-value')).to_have_text('100.0')
                 browser.close()
             assert not errors, errors
             print("UI PASS: English, Russian and Chinese; desktop/mobile, language persistence, navigation, dialogs and authentication.")

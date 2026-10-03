@@ -265,6 +265,16 @@ def state():
             "total_jobs": total_jobs, "worker_online": bool(worker and time.time()-float(worker[0]) < 15), "server_time": time.time()}
 
 
+@app.get("/api/progress")
+def progress():
+    # Lightweight telemetry polling avoids repeatedly reading the whole workspace.
+    with connect() as db:
+        row = db.execute("SELECT * FROM jobs ORDER BY created DESC LIMIT 1").fetchone()
+        worker = db.execute("SELECT value FROM meta WHERE key='worker_heartbeat'").fetchone()
+    return {"job": public_job(row) if row else None,
+            "worker_online": bool(worker and time.time()-float(worker[0]) < 15)}
+
+
 @app.get("/api/hashes/{identity}")
 def hash_detail(identity: str, request: Request):
     with connect() as db:

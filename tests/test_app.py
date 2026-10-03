@@ -159,3 +159,19 @@ def test_worker_crash_preserves_per_hash_history(client):
 def test_malformed_login_request_is_bounded(client):
     assert client.post('/login',json=[]).status_code==400
     assert client.post('/login',content='x'*9000,headers={'Content-Type':'application/json'}).status_code==400
+
+
+def test_progress_is_private_and_matches_measured_job(client):
+    assert client.get('/api/progress').status_code == 401
+    login(client)
+    assert client.get('/api/progress').json()['job'] is None
+    upload_network(client)
+    word = upload_word(client)
+    client.put('/api/queue', json={'ids': [word]})
+    identity = client.post('/api/jobs', json={}).json()['id']
+    with connect(True) as db:
+        db.execute('UPDATE jobs SET progress=? WHERE id=?', ('{"percent":37.25,"pass_index":1}', identity))
+    response = client.get('/api/progress')
+    job = response.json()['job']
+    assert job['id'] == identity and job['progress']['percent'] == 37.25
+    assert 'pid' not in job and 'path' not in job['wordlists'][0]

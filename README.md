@@ -32,6 +32,10 @@ iEasyHash turns an offline Hashcat workflow into a browser workspace. Import an 
 
 Built with **FastAPI, SQLite, vanilla JavaScript and Hashcat**. The interface uses warm paper surfaces, graphite typography, teal telemetry and orange actions. It is responsive, has no frontend build step, and loads no external fonts or analytics.
 
+## Live progress
+
+Active audits use a softly breathing frame and a moving highlight on the progress bar. Hashcat reports measured progress every second; the console polls a lightweight private telemetry endpoint every 500 ms and eases the bar and percentage between samples. Progress never extrapolates beyond a measured value. Motion respects the system's [reduced-motion preference](https://www.w3.org/WAI/WCAG22/Techniques/css/C39), and pauses when the tab is hidden.
+
 ## Languages
 
 **English (default) · Русский · 简体中文 (Simplified Chinese)**

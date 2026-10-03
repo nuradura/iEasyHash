@@ -112,7 +112,7 @@ def run_pass(job, words, index, hashes_file):
                  "--session",f"wifi-{job['id']}-{index}","--restore-file-path",str(restore),
                  "--potfile-path",str(config.DATA/"hashcat.potfile"),
                  "--outfile",str(run_dir/f"pass-{index}.results"),"--outfile-format","1,3",
-                 "--status","--status-json","--status-timer","2","--hwmon-temp-abort","85","--logfile-disable"]
+                 "--status","--status-json","--status-timer","1","--hwmon-temp-abort","85","--logfile-disable"]
         if job["runtime"]:
             command += ["--runtime",str(job["runtime"])]
     process = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
